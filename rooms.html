@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rooms & Suites — Citrus Leisure PLC | 5-Star Sri Lanka Luxury</title>
+  <meta name="description" content="Explore luxury rooms and presidential ocean suites across Citrus Waskaduwa, Citrus Hikkaduwa, and The Steuart Colombo." />
+
+  <!-- Google Fonts: Cinzel, Playfair Display, Plus Jakarta Sans, Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Almaris Theme Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP BAR
+       ========================================================================== -->
+  <div class="almaris-topbar">
+    <div class="container topbar-flex">
+      <div class="topbar-contacts">
+        <a href="tel:+94115755000" class="topbar-contact-item">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>+94 11 575 5000</span>
+        </a>
+        <a href="mailto:reservations@citrusleisure.com" class="topbar-contact-item">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>reservations@citrusleisure.com</span>
+        </a>
+      </div>
+
+      <div class="topbar-right">
+        <div class="currency-select-box">
+          <label for="currencySelector" style="display:none;">Currency</label>
+          <select id="currencySelector" aria-label="Currency Selector">
+            <option value="USD">USD ($)</option>
+            <option value="LKR">LKR (Rs)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="AUD">AUD (A$)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN ALMARIS NAVBAR
+       ========================================================================== -->
+  <header class="almaris-header" id="almarisHeader">
+    <div class="container">
+      <nav class="almaris-nav">
+        <!-- Logo with 5 Stars -->
+        <a href="index.html" class="almaris-brand">
+          <div class="brand-emblem-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <div class="brand-naming">
+            <span class="brand-main-name">CITRUS</span>
+            <div class="brand-star-row">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="sub">LEISURE PLC</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Desktop Menu Links -->
+        <ul class="almaris-menu">
+          <li class="menu-item">
+            <a href="index.html" class="menu-link">Home</a>
+          </li>
+
+          <li class="menu-item">
+            <a href="sanctuaries.html" class="menu-link">
+              Sanctuaries
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+            <div class="almaris-dropdown">
+              <a href="sanctuaries.html#waskaduwa" class="dropdown-entry">
+                <span class="dropdown-entry-title">Citrus Waskaduwa</span>
+                <span class="dropdown-entry-desc">5-Star Oceanfront Resort</span>
+              </a>
+              <a href="sanctuaries.html#hikkaduwa" class="dropdown-entry">
+                <span class="dropdown-entry-title">Citrus Hikkaduwa</span>
+                <span class="dropdown-entry-desc">Vibrant Coral & Surf Retreat</span>
+              </a>
+              <a href="sanctuaries.html#steuart" class="dropdown-entry">
+                <span class="dropdown-entry-title">The Steuart by Citrus</span>
+                <span class="dropdown-entry-desc">1835 Scottish Heritage Hotel</span>
+              </a>
+            </div>
+          </li>
+
+          <li class="menu-item active">
+            <a href="rooms.html" class="menu-link">
+              Rooms
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+            <div class="almaris-dropdown">
+              <a href="rooms.html#waskaduwa" class="dropdown-entry">
+                <span class="dropdown-entry-title">Presidential Ocean Suites</span>
+                <span class="dropdown-entry-desc">Citrus Waskaduwa</span>
+              </a>
+              <a href="rooms.html#hikkaduwa" class="dropdown-entry">
+                <span class="dropdown-entry-title">Deluxe Sunset Beach Rooms</span>
+                <span class="dropdown-entry-desc">Citrus Hikkaduwa</span>
+              </a>
+              <a href="rooms.html#steuart" class="dropdown-entry">
+                <span class="dropdown-entry-title">Edinburgh Scottish Chambers</span>
+                <span class="dropdown-entry-desc">The Steuart Colombo</span>
+              </a>
+            </div>
+          </li>
+
+          <li class="menu-item">
+            <a href="dining.html" class="menu-link">Dining</a>
+          </li>
+
+          <li class="menu-item">
+            <a href="wellness.html" class="menu-link">Wellness</a>
+          </li>
+
+          <li class="menu-item">
+            <a href="index.html#facilities" class="menu-link">Facilities</a>
+          </li>
+
+          <li class="menu-item">
+            <a href="contact.html" class="menu-link">Contact</a>
+          </li>
+        </ul>
+
+        <!-- Right Action Buttons -->
+        <div class="nav-right-actions">
+          <a href="#bookingBar" class="btn-almaris btn-almaris-gold">
+            <span>Reservation</span>
+          </a>
+
+          <button class="sidebar-toggle-btn" id="sidebarOpenBtn" aria-label="Open Luxury Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Left Luxury Sidebar Drawer -->
+  <div class="almaris-sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="almaris-sidebar-drawer" id="sidebarDrawer">
+    <div class="sidebar-drawer-header">
+      <div class="sidebar-close-icon" id="sidebarCloseBtn">&times;</div>
+      <svg class="mandala-crest" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="50" cy="50" r="46" stroke-dasharray="2 2" />
+        <circle cx="50" cy="50" r="38" />
+        <circle cx="50" cy="50" r="26" />
+        <path d="M50 14 C44 26 56 26 50 38 C44 26 56 26 50 14 Z" fill="currentColor" fill-opacity="0.1" />
+        <path d="M50 86 C44 74 56 74 50 62 C44 74 56 74 50 86 Z" fill="currentColor" fill-opacity="0.1" />
+        <path d="M14 50 C26 44 26 56 38 50 C26 44 26 56 14 50 Z" fill="currentColor" fill-opacity="0.1" />
+        <path d="M86 50 C74 44 74 56 62 50 C74 44 74 56 86 50 Z" fill="currentColor" fill-opacity="0.1" />
+        <circle cx="50" cy="50" r="8" fill="currentColor" />
+      </svg>
+      <span class="sidebar-brand-name">CITRUS</span>
+      <div class="sidebar-stars">★ ★ ★ ★ ★</div>
+    </div>
+
+    <div class="sidebar-nav-stack">
+      <a href="index.html" class="sidebar-nav-item">Home</a>
+      <a href="sanctuaries.html" class="sidebar-nav-item">Our Sanctuaries</a>
+      <a href="rooms.html" class="sidebar-nav-item">Rooms & Suites</a>
+      <a href="#bookingBar" class="sidebar-nav-item">Reservation</a>
+      <a href="index.html#facilities" class="sidebar-nav-item">Hotel Facilities</a>
+      <a href="dining.html" class="sidebar-nav-item">Dining & Lounges</a>
+      <a href="wellness.html" class="sidebar-nav-item">Citron Senses Spa</a>
+      <a href="contact.html" class="sidebar-nav-item">Contact Us</a>
+    </div>
+
+    <div style="text-align: center;">
+      <a href="tel:+94115755000" class="sidebar-phone-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>+94 11 575 5000</span>
+      </a>
+      <p style="font-size: 0.72rem; color: var(--almaris-text-muted); margin-top: 10px;">Sri Lanka's Premier Luxury Collection</p>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       SUBPAGE HERO BANNER
+       ========================================================================== -->
+  <section class="almaris-sub-hero" style="background-image: url('assets/images/waskaduwa/Presidential-Suite-post.jpg');">
+    <div class="sub-hero-overlay"></div>
+    <div class="container sub-hero-content">
+      <div class="sub-hero-breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Rooms & Suites</span>
+      </div>
+      <h1 class="sub-hero-title">Curated Luxury Accommodations</h1>
+      <p class="sub-hero-desc">
+        Experience oceanfront grandeur, private sunset beach verandas, and 1835 Scottish mercantile heritage across our 290+ exquisitely appointed rooms and suites.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FLOATING BOOKING BAR
+       ========================================================================== -->
+  <section class="almaris-booking-bar-wrapper" id="bookingBar" style="margin-top: -30px;">
+    <div class="container">
+      <div class="almaris-booking-card">
+        <form class="almaris-booking-form" id="almarisBookingForm">
+          <div class="booking-box">
+            <span class="booking-box-label">Choose Sanctuary</span>
+            <select class="booking-box-select" id="almarisSanctuarySelect" required>
+              <option value="waskaduwa" selected>Citrus Waskaduwa (5-Star)</option>
+              <option value="hikkaduwa">Citrus Hikkaduwa (Beach & Surf)</option>
+              <option value="steuart">The Steuart Colombo (Colonial 1835)</option>
+            </select>
+          </div>
+          <div class="booking-box">
+            <span class="booking-box-label">Check In</span>
+            <input type="date" class="booking-box-input" id="almarisCheckIn" required />
+          </div>
+          <div class="booking-box">
+            <span class="booking-box-label">Check Out</span>
+            <input type="date" class="booking-box-input" id="almarisCheckOut" required />
+          </div>
+          <div class="booking-box" style="position: relative;">
+            <span class="booking-box-label">Guests & Rooms</span>
+            <div class="booking-guest-trigger" id="guestTriggerBtn">
+              <span id="guestDisplay">2 Adults, 0 Children</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="booking-guest-popover" id="guestPopover">
+              <div class="popover-row">
+                <span style="font-size: 0.85rem; color: #fff;">Adults (12+)</span>
+                <div class="stepper-ctrls">
+                  <button type="button" class="step-circ" id="adultDec">-</button>
+                  <span id="adultVal" style="font-weight: 600;">2</span>
+                  <button type="button" class="step-circ" id="adultInc">+</button>
+                </div>
+              </div>
+              <div class="popover-row">
+                <span style="font-size: 0.85rem; color: #fff;">Children (0-11)</span>
+                <div class="stepper-ctrls">
+                  <button type="button" class="step-circ" id="childDec">-</button>
+                  <span id="childVal" style="font-weight: 600;">0</span>
+                  <button type="button" class="step-circ" id="childInc">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="booking-box" style="border: none;">
+            <button type="submit" class="btn-almaris btn-almaris-gold" style="width: 100%; height: 50px;">
+              <span>Check Availability</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ROOMS & SUITES WITH FILTER TABS
+       ========================================================================== -->
+  <section class="section-padding" id="rooms">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 40px;">
+        <span class="almaris-sub-badge">ACCOMMODATION PORTFOLIO</span>
+        <h2 class="almaris-heading">Choose Your <span class="gold-text">Sanctuary</span></h2>
+        <p class="almaris-desc mx-auto">
+          Filter by destination to view suite specifications, pricing in your preferred currency, and exclusive direct booking privileges.
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="almaris-filter-tabs">
+        <button class="filter-tab-btn active" data-filter="all">All Sanctuaries</button>
+        <button class="filter-tab-btn" data-filter="waskaduwa">Citrus Waskaduwa</button>
+        <button class="filter-tab-btn" data-filter="hikkaduwa">Citrus Hikkaduwa</button>
+        <button class="filter-tab-btn" data-filter="steuart">The Steuart Colombo</button>
+      </div>
+
+      <!-- Triple Arched Room Showcase Grid -->
+      <div class="almaris-triple-arch-grid" id="almarisRoomsContainer">
+        <!-- Room 1 -->
+        <div class="arch-room-card" data-sanctuary="waskaduwa" id="waskaduwa">
+          <div class="arch-room-media">
+            <img src="assets/images/waskaduwa/Presidential-Suite-post.jpg" alt="Presidential Ocean Suite" />
+            <span class="arch-property-pill">Citrus Waskaduwa</span>
+            <div class="arch-price-badge" data-usd="240">$240 <span>/ night</span></div>
+          </div>
+          <div class="arch-room-body">
+            <div class="arch-room-specs">
+              <span>2 Guests</span><span class="dot">•</span><span>King Bed</span><span class="dot">•</span><span>95 m²</span>
+            </div>
+            <h3 class="arch-room-title">Presidential Ocean Suite</h3>
+            <p class="arch-room-desc">
+              Panoramic Indian Ocean views, private expansive terrace salon, deep marble soaking tub, and dedicated butler service.
+            </p>
+            <div>
+              <button class="btn-almaris btn-almaris-gold" style="width: 100%;" onclick="quickBook('Presidential Ocean Suite', 'Citrus Waskaduwa')">Reserve Suite</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 2 -->
+        <div class="arch-room-card" data-sanctuary="hikkaduwa" id="hikkaduwa">
+          <div class="arch-room-media">
+            <img src="assets/images/hikkaduwa/Deluxe-Rooms-1.jpg" alt="Deluxe Sunset Beach Room" />
+            <span class="arch-property-pill">Citrus Hikkaduwa</span>
+            <div class="arch-price-badge" data-usd="140">$140 <span>/ night</span></div>
+          </div>
+          <div class="arch-room-body">
+            <div class="arch-room-specs">
+              <span>2 Guests</span><span class="dot">•</span><span>King / Twin</span><span class="dot">•</span><span>42 m²</span>
+            </div>
+            <h3 class="arch-room-title">Deluxe Sunset Beach Room</h3>
+            <p class="arch-room-desc">
+              Direct access to Hikkaduwa's golden surf beach, private sunset veranda, handcrafted rattan furnishing, and sea breezes.
+            </p>
+            <div>
+              <button class="btn-almaris btn-almaris-gold" style="width: 100%;" onclick="quickBook('Deluxe Sunset Beach Room', 'Citrus Hikkaduwa')">Reserve Room</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 3 -->
+        <div class="arch-room-card" data-sanctuary="steuart" id="steuart">
+          <div class="arch-room-media">
+            <img src="assets/images/steuart/Suite-room.jpg" alt="Edinburgh Scottish Suite" />
+            <span class="arch-property-pill">The Steuart Colombo</span>
+            <div class="arch-price-badge" data-usd="155">$155 <span>/ night</span></div>
+          </div>
+          <div class="arch-room-body">
+            <div class="arch-room-specs">
+              <span>2 Guests</span><span class="dot">•</span><span>Super King</span><span class="dot">•</span><span>52 m²</span>
+            </div>
+            <h3 class="arch-room-title">Edinburgh Scottish Suite</h3>
+            <p class="arch-room-desc">
+              Rich 1835 Scottish mahogany accents, executive workspace, luxury rain shower, and Fort heritage district panoramas.
+            </p>
+            <div>
+              <button class="btn-almaris btn-almaris-gold" style="width: 100%;" onclick="quickBook('Edinburgh Scottish Suite', 'The Steuart Colombo')">Reserve Suite</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 4 -->
+        <div class="arch-room-card" data-sanctuary="waskaduwa">
+          <div class="arch-room-media">
+            <img src="assets/images/waskaduwa/Executive-room.jpg" alt="Executive Ocean View Room" />
+            <span class="arch-property-pill">Citrus Waskaduwa</span>
+            <div class="arch-price-badge" data-usd="175">$175 <span>/ night</span></div>
+          </div>
+          <div class="arch-room-body">
+            <div class="arch-room-specs">
+              <span>2 Guests</span><span class="dot">•</span><span>King Bed</span><span class="dot">•</span><span>58 m²</span>
+            </div>
+            <h3 class="arch-room-title">Executive Ocean View Room</h3>
+            <p class="arch-room-desc">
+              Floor-to-ceiling glass doors opening directly onto the tranquil azure ocean, luxury espresso bar, and private balcony.
+            </p>
+            <div>
+              <button class="btn-almaris btn-almaris-gold" style="width: 100%;" onclick="quickBook('Executive Ocean View Room', 'Citrus Waskaduwa')">Reserve Room</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 5 -->
+        <div class="arch-room-card" data-sanctuary="hikkaduwa">
+          <div class="arch-room-media">
+            <img src="assets/images/hikkaduwa/Standerd-Rooms.jpg" alt="Superior Coral View Room" />
+            <span class="arch-property-pill">Citrus Hikkaduwa</span>
+            <div class="arch-price-badge" data-usd="115">$115 <span>/ night</span></div>
+          </div>
+          <div class="arch-room-body">
+            <div class="arch-room-specs">
+              <span>2 Guests</span><span class="dot">•</span><span>Twin Beds</span><span class="dot">•</span><span>38 m²</span>
+            </div>
+            <h3 class="arch-room-title">Superior Coral View Room</h3>
+            <p class="arch-room-desc">
+              Vibrant coastal retreat steps from the living coral reefs, customized surf racks, organic Ceylon bath amenities.
+            </p>
+            <div>
+              <button class="btn-almaris btn-almaris-gold" style="width: 100%;" onclick="quickBook('Superior Coral View Room', 'Citrus Hikkaduwa')">Reserve Room</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room 6 -->
+        <div class="arch-room-card" data-sanctuary="steuart">
+          <div class="arch-room-media">
+            <img src="assets/images/steuart/Deluxe-room.jpg" alt="Glasgow Deluxe Heritage Room" />
+            <span class="arch-property-pill">The Steuart Colombo</span>
+            <div class="arch-price-badge" data-usd="125">$125 <span>/ night</span></div>
+          </div>
+          <div class="arch-room-body">
+            <div class="arch-room-specs">
+              <span>2 Guests</span><span class="dot">•</span><span>Queen Bed</span><span class="dot">•</span><span>36 m²</span>
+            </div>
+            <h3 class="arch-room-title">Glasgow Deluxe Heritage Room</h3>
+            <p class="arch-room-desc">
+              Boutique mercantile comfort nestled in Colombo's financial heart with premium acoustics and single-malt minibar.
+            </p>
+            <div>
+              <button class="btn-almaris btn-almaris-gold" style="width: 100%;" onclick="quickBook('Glasgow Deluxe Heritage Room', 'The Steuart Colombo')">Reserve Room</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ROOM INCLUSIONS MATRIX
+       ========================================================================== -->
+  <section class="section-padding" style="background: #090a0d; border-top: 1px solid rgba(255,255,255,0.06);">
+    <div class="container text-center">
+      <span class="almaris-sub-badge">DIRECT BOOKING PRIVILEGES</span>
+      <h2 class="almaris-heading" style="font-size: 2.2rem;">Every Room Reservation Includes</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 35px;">
+        <div style="background: #121419; padding: 24px; border: 1px solid rgba(255,255,255,0.06); border-radius: 4px;">
+          <div style="color: var(--almaris-gold); font-size: 1.5rem; margin-bottom: 10px;">☕</div>
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 6px;">Daily Ceylon Breakfast</h4>
+          <p style="font-size: 0.8rem; color: var(--almaris-text-muted);">Fresh tropical fruits, artisan bakery & traditional Sri Lankan specialties.</p>
+        </div>
+        <div style="background: #121419; padding: 24px; border: 1px solid rgba(255,255,255,0.06); border-radius: 4px;">
+          <div style="color: var(--almaris-gold); font-size: 1.5rem; margin-bottom: 10px;">💆</div>
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 6px;">$30 Spa Voucher</h4>
+          <p style="font-size: 0.8rem; color: var(--almaris-text-muted);">Redeemable for any Citron Senses authentic Balinese wellness therapy.</p>
+        </div>
+        <div style="background: #121419; padding: 24px; border: 1px solid rgba(255,255,255,0.06); border-radius: 4px;">
+          <div style="color: var(--almaris-gold); font-size: 1.5rem; margin-bottom: 10px;">📶</div>
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 6px;">High-Speed Wi-Fi</h4>
+          <p style="font-size: 0.8rem; color: var(--almaris-text-muted);">Dedicated high-bandwidth fiber connectivity across rooms and beaches.</p>
+        </div>
+        <div style="background: #121419; padding: 24px; border: 1px solid rgba(255,255,255,0.06); border-radius: 4px;">
+          <div style="color: var(--almaris-gold); font-size: 1.5rem; margin-bottom: 10px;">🍸</div>
+          <h4 style="color: #fff; font-size: 1rem; margin-bottom: 6px;">Sunset High Tea / Cocktail</h4>
+          <p style="font-size: 0.8rem; color: var(--almaris-text-muted);">Complimentary afternoon Ceylon tea or signature sundowner drink.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       GRAND FOOTER
+       ========================================================================== -->
+  <footer class="almaris-footer" id="contact">
+    <div class="container">
+      <div class="footer-top-row">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+            <span style="font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 4px; color: #fff;">CITRUS</span>
+            <div style="color: var(--almaris-gold); font-size: 0.75rem;">★ ★ ★ ★ ★</div>
+          </div>
+          <p style="font-size: 0.85rem; line-height: 1.7; color: var(--almaris-text-muted); margin-bottom: 20px;">
+            Citrus Leisure PLC is a listed Sri Lankan hospitality group operating luxury beachfront resorts and boutique city hotels benchmarked to international 5-star standards.
+          </p>
+          <p style="font-size: 0.8rem; color: var(--almaris-gold);">Head Office: +94 11 575 5000</p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Our Sanctuaries</h4>
+          <div class="footer-links-list">
+            <a href="sanctuaries.html#waskaduwa">Citrus Waskaduwa (Kalutara)</a>
+            <a href="sanctuaries.html#hikkaduwa">Citrus Hikkaduwa (Galle Coast)</a>
+            <a href="sanctuaries.html#steuart">The Steuart by Citrus (Colombo Fort)</a>
+            <a href="#bookingBar">Direct Reservations</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Experiences</h4>
+          <div class="footer-links-list">
+            <a href="rooms.html">Presidential Suites</a>
+            <a href="dining.html">&Co Pub and Kitchen</a>
+            <a href="dining.html">Lemon Sun Dining</a>
+            <a href="wellness.html">Citron Senses Spa</a>
+            <a href="sanctuaries.html">Mandarin Shore Ballroom</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Corporate PLC</h4>
+          <div class="footer-links-list">
+            <a href="index.html">About Citrus Leisure PLC</a>
+            <a href="contact.html">Investor Relations & Reports</a>
+            <a href="contact.html">Sustainability & CSR</a>
+            <a href="contact.html">Careers at Citrus</a>
+            <a href="contact.html">SLTDA Accreditation</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 25px; flex-wrap: wrap; gap: 14px; font-size: 0.75rem;">
+        <div>© 2026 Citrus Leisure PLC. All Rights Reserved. Almaris Luxury Hotel Theme.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Booking Modal -->
+  <div class="almaris-sidebar-overlay" id="bookingModalOverlay">
+    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1a1d24; border: 1px solid var(--almaris-gold); border-radius: var(--radius-sm); padding: 36px; width: 90%; max-width: 550px; z-index: 3000; box-shadow: 0 25px 60px rgba(0,0,0,0.8);">
+      <button style="position: absolute; top: 16px; right: 16px; color: #fff; font-size: 1.5rem;" onclick="closeModal()">&times;</button>
+      <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.6rem; margin-bottom: 6px;" id="modalRoomTitle">Reserve Your Stay</h3>
+      <p style="font-size: 0.85rem; color: var(--almaris-gold); margin-bottom: 20px;" id="modalHotelSub">Direct Member Rate Applied</p>
+      
+      <div style="background: rgba(255,255,255,0.04); padding: 16px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem; color: #e5e7eb;">
+        <div>✨ Best Rate Guarantee</div>
+        <div>🥂 Complimentary Welcome High Tea</div>
+        <div>💆 $30 Citron Senses Spa Credit Included</div>
+      </div>
+
+      <button class="btn-almaris btn-almaris-gold" style="width: 100%;" onclick="confirmBooking()">Confirm Reservation</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
