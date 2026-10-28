@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBookingBar();
   initCurrencyEngine();
   initHeroSlider();
+  initHeroParallax();
   initRoomFilterTabs();
   initScrollAnimations();
 });
@@ -86,6 +87,8 @@ window.switchHeroSlide = (key) => {
   const slides = document.querySelectorAll('.hero-slide-item');
   slides.forEach(s => {
     if (s.getAttribute('data-slide') === key) {
+      s.classList.remove('active');
+      void s.offsetWidth; // Force reflow so Ken Burns zoom restarts from scale(1)
       s.classList.add('active');
     } else {
       s.classList.remove('active');
@@ -116,6 +119,41 @@ function initHeroSlider() {
     idx = (idx + 1) % keys.length;
     switchHeroSlide(keys[idx]);
   }, 9000);
+}
+
+/* ==========================================================================
+   3B. HERO INTERACTIVE 3D PARALLAX MOVEMENT
+   ========================================================================== */
+function initHeroParallax() {
+  const heroSection = document.getElementById('hero');
+  const sliderStage = document.querySelector('.hero-slider-stage');
+  const archStage = document.querySelector('.almaris-arch-stage');
+  if (!heroSection || !sliderStage) return;
+
+  heroSection.addEventListener('mousemove', (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+    // Smooth subtle luxury 3D depth movement
+    sliderStage.style.transform = `translate(${x * -22}px, ${y * -16}px)`;
+    if (archStage) {
+      archStage.style.transform = `translate(${x * 14}px, ${y * 10}px)`;
+    }
+  }, { passive: true });
+
+  heroSection.addEventListener('mouseleave', () => {
+    sliderStage.style.transition = 'transform 0.8s ease-out';
+    sliderStage.style.transform = 'translate(0, 0)';
+    if (archStage) {
+      archStage.style.transition = 'transform 0.8s ease-out';
+      archStage.style.transform = 'translate(0, 0)';
+    }
+    setTimeout(() => {
+      sliderStage.style.transition = '';
+      if (archStage) archStage.style.transition = '';
+    }, 800);
+  });
 }
 
 /* ==========================================================================

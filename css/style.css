@@ -737,13 +737,24 @@ ul, ol {
   background-color: #0b0d11;
 }
 
+/* Hero Cinematic Ken Burns Zoom-In Motion */
+@keyframes heroKenBurnsZoom {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.22) translate(-1%, -0.8%);
+  }
+}
+
 .hero-slider-stage {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: -4%;
+  left: -4%;
+  width: 108%;
+  height: 108%;
   z-index: 0;
+  will-change: transform;
 }
 
 .hero-slide-item {
@@ -755,13 +766,14 @@ ul, ol {
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transform: scale(1.04);
-  transition: opacity 1.2s ease, transform 6s ease-out;
+  transform: scale(1);
+  transition: opacity 1.6s ease-in-out;
+  will-change: transform, opacity;
 }
 
 .hero-slide-item.active {
   opacity: 1;
-  transform: scale(1);
+  animation: heroKenBurnsZoom 9.5s cubic-bezier(0.16, 0.84, 0.44, 1) forwards;
 }
 
 .hero-dark-vignette {
@@ -797,6 +809,8 @@ ul, ol {
     rgba(197, 168, 128, 0.08) 0%,
     rgba(18, 20, 24, 0.4) 80%
   );
+  transition: transform 0.25s ease-out, box-shadow 0.4s ease;
+  will-change: transform;
 }
 
 .arch-stars-row {
