@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCurrencyEngine();
   initHeroSlider();
   initRoomFilterTabs();
+  initScrollAnimations();
 });
 
 /* ==========================================================================
@@ -314,4 +315,192 @@ function initRoomFilterTabs() {
       });
     });
   });
+}
+
+/* ==========================================================================
+   9. ALMARIS LUXURY SCROLL REVEAL ANIMATIONS (VIEWPORT TRIGGERED)
+   ========================================================================== */
+function initScrollAnimations() {
+  // 1. Automatically assign luxury animation classes to semantic sections & children
+  const sections = document.querySelectorAll('section, footer');
+  sections.forEach(sec => {
+    // Avoid double-animating the hero stage on scroll (it has page-load CSS keyframes)
+    if (sec.id === 'hero') return;
+
+    // Headings, Sub-badges and Paragraphs glide up
+    const sectionHeaders = sec.querySelectorAll('.almaris-sub-badge, .almaris-heading, .almaris-desc');
+    sectionHeaders.forEach((el, idx) => {
+      if (!el.classList.contains('reveal-fade-up')) {
+        el.classList.add('reveal-fade-up');
+        el.style.transitionDelay = `${idx * 0.1}s`;
+      }
+    });
+
+    // Dual Arches Welcome Layout
+    const dualArch = sec.querySelector('.almaris-dual-arch-grid');
+    if (dualArch) {
+      const photos = dualArch.querySelectorAll('.arch-frame-photo');
+      if (photos[0] && !photos[0].classList.contains('reveal-slide-left')) {
+        photos[0].classList.add('reveal-slide-left');
+      }
+      if (photos[1] && !photos[1].classList.contains('reveal-slide-right')) {
+        photos[1].classList.add('reveal-slide-right');
+      }
+      const center = dualArch.querySelector('.welcome-center-content');
+      if (center && !center.classList.contains('reveal-zoom-in')) {
+        center.classList.add('reveal-zoom-in');
+      }
+    }
+
+    // Ocean Dreams Color Block Section
+    const oceanGrid = sec.querySelector('.ocean-dreams-grid');
+    if (oceanGrid) {
+      const teal = oceanGrid.querySelector('.ocean-teal-pane');
+      const sand = oceanGrid.querySelector('.ocean-sand-pane');
+      if (teal && !teal.classList.contains('reveal-slide-left')) {
+        teal.classList.add('reveal-slide-left');
+      }
+      if (sand && !sand.classList.contains('reveal-slide-right')) {
+        sand.classList.add('reveal-slide-right');
+      }
+    }
+
+    // Hotel Facilities 6-Box Grid (Progressive wave ripple)
+    const facilityGrid = sec.querySelector('.facilities-grid-6');
+    if (facilityGrid) {
+      Array.from(facilityGrid.children).forEach((box, i) => {
+        if (!box.classList.contains('reveal-fade-up')) {
+          box.classList.add('reveal-fade-up');
+          box.style.transitionDelay = `${(i % 3) * 0.15 + Math.floor(i / 3) * 0.1}s`;
+        }
+      });
+    }
+
+    // Triple Arched Room Showcase Cards
+    const roomsGrid = sec.querySelector('.almaris-triple-arch-grid, .almaris-rooms-grid');
+    if (roomsGrid) {
+      Array.from(roomsGrid.children).forEach((card, i) => {
+        if (!card.classList.contains('reveal-fade-up')) {
+          card.classList.add('reveal-fade-up');
+          card.style.transitionDelay = `${(i % 3) * 0.14}s`;
+        }
+      });
+    }
+
+    // Dining Tiles Cards
+    const diningGrid = sec.querySelector('.dining-tiles-grid');
+    if (diningGrid) {
+      Array.from(diningGrid.children).forEach((tile, i) => {
+        if (!tile.classList.contains('reveal-fade-up')) {
+          tile.classList.add('reveal-fade-up');
+          tile.style.transitionDelay = `${(i % 3) * 0.14}s`;
+        }
+      });
+    }
+
+    // Instagram 6-Photo Strip
+    const instaGrid = sec.querySelector('.instagram-grid-6');
+    if (instaGrid) {
+      Array.from(instaGrid.children).forEach((tile, i) => {
+        if (!tile.classList.contains('reveal-zoom-in')) {
+          tile.classList.add('reveal-zoom-in');
+          tile.style.transitionDelay = `${i * 0.08}s`;
+        }
+      });
+    }
+
+    // Citron Senses Balinese Spa split
+    if (sec.id === 'wellness') {
+      const containerRow = sec.querySelector('.container > div');
+      if (containerRow && containerRow.children.length === 2) {
+        if (!containerRow.children[0].classList.contains('reveal-slide-left')) {
+          containerRow.children[0].classList.add('reveal-slide-left');
+        }
+        if (!containerRow.children[1].classList.contains('reveal-slide-right')) {
+          containerRow.children[1].classList.add('reveal-slide-right');
+        }
+      }
+    }
+
+    // Sanctuaries deep-dive showcase rows (sanctuaries.html)
+    const sanctuaryRow = sec.querySelectorAll('.sanctuary-showcase-row');
+    sanctuaryRow.forEach((row, i) => {
+      const media = row.querySelector('.sanctuary-showcase-media');
+      const info = row.querySelector('.sanctuary-showcase-info');
+      if (i % 2 === 0) {
+        if (media) media.classList.add('reveal-slide-left');
+        if (info) info.classList.add('reveal-slide-right');
+      } else {
+        if (media) media.classList.add('reveal-slide-right');
+        if (info) info.classList.add('reveal-slide-left');
+      }
+    });
+
+    // Spa rituals menu (wellness.html)
+    const spaGrid = sec.querySelector('.spa-rituals-grid');
+    if (spaGrid) {
+      Array.from(spaGrid.children).forEach((rit, i) => {
+        if (!rit.classList.contains('reveal-fade-up')) {
+          rit.classList.add('reveal-fade-up');
+          rit.style.transitionDelay = `${(i % 2) * 0.15}s`;
+        }
+      });
+    }
+
+    // Contact layout (contact.html)
+    const contactGrid = sec.querySelector('.contact-layout-grid');
+    if (contactGrid && contactGrid.children.length === 2) {
+      if (!contactGrid.children[0].classList.contains('reveal-slide-left')) {
+        contactGrid.children[0].classList.add('reveal-slide-left');
+      }
+      if (!contactGrid.children[1].classList.contains('reveal-slide-right')) {
+        contactGrid.children[1].classList.add('reveal-slide-right');
+      }
+    }
+
+    // Footer Columns Stagger
+    const footerRow = sec.querySelector('.footer-top-row');
+    if (footerRow) {
+      Array.from(footerRow.children).forEach((col, i) => {
+        if (!col.classList.contains('reveal-fade-up')) {
+          col.classList.add('reveal-fade-up');
+          col.style.transitionDelay = `${i * 0.12}s`;
+        }
+      });
+    }
+  });
+
+  // 2. Query all elements to be observed
+  const animTargets = document.querySelectorAll(
+    '.reveal-fade-up, .reveal-slide-left, .reveal-slide-right, .reveal-zoom-in, .reveal-section'
+  );
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          // Once revealed, keep it permanently visible
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.1
+    });
+
+    animTargets.forEach(el => {
+      // If already in viewport on initial load, reveal immediately
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 30 && rect.bottom > 0) {
+        el.classList.add('revealed');
+      } else {
+        observer.observe(el);
+      }
+    });
+  } else {
+    // Graceful fallback for older browsers
+    animTargets.forEach(el => el.classList.add('revealed'));
+  }
 }
