@@ -5,29 +5,36 @@
    Signatures: Glowing Golden Arch, Dual-Arched Image Frames, Left Mandala Drawer
    ========================================================================== */
 
-/* --- CSS Variables & Design Tokens --- */
+/* --- CSS Variables & Design Tokens (Luxury Light Theme) --- */
 :root {
-  /* Almaris Signature Palette */
-  --almaris-dark: #121418;
-  --almaris-dark-card: #1a1d24;
-  --almaris-dark-surface: #222630;
-  --almaris-dark-border: rgba(255, 255, 255, 0.08);
+  /* Almaris Signature Light Palette */
+  --almaris-bg: #FAF8F5;              /* Warm Alabaster Cream */
+  --almaris-bg-subtle: #F3EFE9;       /* Soft Linen/Stone */
+  --almaris-bg-warm: #EFE8DE;         /* Warm Sand Tint */
+  --almaris-card: #FFFFFF;            /* Pure Crisp Luxury White */
+  --almaris-border: #E8DCCF;          /* Subtle warm champagne border */
+  --almaris-border-light: rgba(179, 134, 76, 0.16);
 
-  --almaris-gold: #c5a880;
-  --almaris-gold-bright: #d4af37;
-  --almaris-gold-hover: #b39268;
-  --almaris-gold-glow: rgba(197, 168, 128, 0.35);
-  --almaris-gold-border: rgba(197, 168, 128, 0.4);
+  /* Champagne Bronze Gold (High Contrast & Radiance) */
+  --almaris-gold: #B3864C;            /* Warm Champagne Bronze Gold */
+  --almaris-gold-deep: #8E652B;       /* Deep readable gold */
+  --almaris-gold-bright: #C99A5B;     /* Radiant Gold */
+  --almaris-gold-hover: #966C35;
+  --almaris-gold-light: rgba(179, 134, 76, 0.09);
+  --almaris-gold-glow: rgba(179, 134, 76, 0.22);
+  --almaris-gold-border: rgba(179, 134, 76, 0.35);
 
-  --almaris-teal: #1a6b78;
-  --almaris-teal-dark: #0f4b55;
-  --almaris-sand: #fbf8f5;
-  --almaris-sand-warm: #f4ede4;
+  /* Ocean Teal Accent */
+  --almaris-teal: #0D7D8B;
+  --almaris-teal-dark: #095964;
+  --almaris-sand: #F7F1E7;
+  --almaris-sand-warm: #EFE4D4;
 
-  --almaris-white: #ffffff;
-  --almaris-text-light: #e5e7eb;
-  --almaris-text-muted: #9ca3af;
-  --almaris-text-dark: #181a1e;
+  /* Typography Colors */
+  --almaris-text-dark: #1A1D20;       /* Deep Charcoal Espresso */
+  --almaris-text-body: #4E555D;       /* Luxurious readable neutral */
+  --almaris-text-muted: #737B85;      /* Subtitle & captions */
+  --almaris-text-light: #FFFFFF;      /* For solid buttons & badges */
 
   /* Typography */
   --font-heading: 'Cinzel', 'Playfair Display', Georgia, serif;
@@ -45,8 +52,10 @@
   --radius-pill: 9999px;
 
   /* Shadows */
-  --shadow-gold-glow: 0 0 35px rgba(197, 168, 128, 0.25);
-  --shadow-card: 0 16px 40px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 4px 16px rgba(45, 30, 15, 0.04);
+  --shadow-card: 0 12px 35px rgba(45, 30, 15, 0.06);
+  --shadow-hover: 0 20px 45px rgba(45, 30, 15, 0.12);
+  --shadow-gold-glow: 0 0 35px rgba(179, 134, 76, 0.22);
 }
 
 /* ==========================================================================
@@ -66,8 +75,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--almaris-text-light);
-  background-color: var(--almaris-dark);
+  color: var(--almaris-text-body);
+  background-color: var(--almaris-bg);
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -77,10 +86,10 @@ body {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--almaris-dark);
+  background: var(--almaris-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2f3b;
+  background: #D8CCBD;
   border-radius: var(--radius-pill);
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -89,7 +98,7 @@ body {
 
 ::selection {
   background: var(--almaris-gold);
-  color: #000000;
+  color: #FFFFFF;
 }
 
 img {
@@ -141,10 +150,10 @@ ul, ol {
   align-items: center;
   gap: 10px;
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   margin-bottom: 14px;
 }
 
@@ -153,7 +162,7 @@ ul, ol {
   content: '';
   display: inline-block;
   width: 25px;
-  height: 1px;
+  height: 1.5px;
   background-color: var(--almaris-gold);
 }
 
@@ -161,7 +170,7 @@ ul, ol {
   font-family: var(--font-heading);
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   font-weight: 400;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   line-height: 1.2;
   margin-bottom: 18px;
 }
@@ -176,13 +185,13 @@ ul, ol {
 
 .almaris-desc {
   font-size: 1rem;
-  color: var(--almaris-text-muted);
+  color: var(--almaris-text-body);
   line-height: 1.8;
   max-width: 650px;
 }
 
 .almaris-desc.light-theme {
-  color: #4b5563;
+  color: var(--almaris-text-body);
 }
 
 .text-center {
@@ -225,43 +234,45 @@ ul, ol {
 /* Gold Solid Button */
 .btn-almaris-gold {
   background: var(--almaris-gold);
-  color: #0b0e14;
+  color: #FFFFFF;
   font-weight: 700;
   border: 1px solid var(--almaris-gold);
-  box-shadow: 0 4px 15px rgba(197, 168, 128, 0.25);
+  box-shadow: 0 4px 15px rgba(179, 134, 76, 0.28);
 }
 
 .btn-almaris-gold:hover {
-  background: #ffffff;
-  border-color: #ffffff;
-  color: #000000;
+  background: var(--almaris-text-dark);
+  border-color: var(--almaris-text-dark);
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Outline Gold Button */
 .btn-almaris-outline {
   background: transparent;
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   border: 1px solid var(--almaris-gold);
+  font-weight: 600;
 }
 
 .btn-almaris-outline:hover {
   background: var(--almaris-gold);
-  color: #000000;
+  color: #FFFFFF;
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(179, 134, 76, 0.25);
 }
 
 /* Cyan/Teal Ocean Button (from Screenshot 4) */
 .btn-almaris-teal {
-  background: #0eb3c4;
-  color: #ffffff;
+  background: #0D7D8B;
+  color: #FFFFFF;
   font-weight: 700;
-  border: 1px solid #0eb3c4;
+  border: 1px solid #0D7D8B;
 }
 
 .btn-almaris-teal:hover {
-  background: #0b93a1;
+  background: #095964;
   transform: translateY(-2px);
 }
 
@@ -269,11 +280,11 @@ ul, ol {
    TOP BAR & HEADER
    ========================================================================== */
 .almaris-topbar {
-  background: #0b0d11;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: #F4EFEA;
+  border-bottom: 1px solid var(--almaris-border);
   height: var(--topbar-height);
   font-size: 0.72rem;
-  color: var(--almaris-text-muted);
+  color: var(--almaris-text-body);
 }
 
 .topbar-flex {
@@ -293,11 +304,11 @@ ul, ol {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--almaris-text-muted);
+  color: var(--almaris-text-body);
 }
 
 .topbar-contact-item:hover {
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
 }
 
 .topbar-right {
@@ -307,19 +318,20 @@ ul, ol {
 }
 
 .currency-select-box select {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--almaris-text-light);
-  padding: 2px 8px;
+  background: #FFFFFF;
+  border: 1px solid var(--almaris-border);
+  color: var(--almaris-text-dark);
+  padding: 3px 10px;
   border-radius: var(--radius-sm);
   font-size: 0.7rem;
+  font-weight: 500;
   outline: none;
   cursor: pointer;
 }
 
 .currency-select-box select option {
-  background: var(--almaris-dark-card);
-  color: #ffffff;
+  background: #FFFFFF;
+  color: var(--almaris-text-dark);
 }
 
 /* Main Navbar */
@@ -329,10 +341,10 @@ ul, ol {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(14, 16, 20, 0.94);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(179, 134, 76, 0.18);
   transition: all 0.35s ease;
 }
 
@@ -343,9 +355,9 @@ ul, ol {
 }
 
 .almaris-header.scrolled {
-  background: rgba(10, 12, 16, 0.98);
-  border-bottom: 1px solid var(--almaris-gold-border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid var(--almaris-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
 .almaris-nav {
@@ -368,13 +380,13 @@ ul, ol {
 .brand-emblem-icon {
   width: 42px;
   height: 42px;
-  border: 1px solid var(--almaris-gold);
+  border: 1.5px solid var(--almaris-gold);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--almaris-gold);
-  background: rgba(197, 168, 128, 0.08);
+  color: var(--almaris-gold-deep);
+  background: var(--almaris-gold-light);
   flex-shrink: 0;
 }
 
@@ -388,7 +400,7 @@ ul, ol {
   font-size: 1.4rem;
   font-weight: 500;
   letter-spacing: 3.5px;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   line-height: 1;
   white-space: nowrap;
 }
@@ -409,9 +421,10 @@ ul, ol {
 .brand-star-row span.sub {
   font-size: 0.6rem;
   letter-spacing: 1.5px;
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   text-transform: uppercase;
   margin-left: 4px;
+  font-weight: 600;
 }
 
 /* Desktop Nav Links */
@@ -439,7 +452,7 @@ ul, ol {
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--almaris-text-dark);
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -450,7 +463,7 @@ ul, ol {
 
 .menu-link:hover,
 .menu-item.active .menu-link {
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
 }
 
 .menu-link svg.arrow {
@@ -487,27 +500,27 @@ ul, ol {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--almaris-border);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.03);
   flex-shrink: 0;
   transition: all 0.25s ease;
 }
 
 .sidebar-toggle-btn:hover {
   border-color: var(--almaris-gold);
-  background: rgba(197, 168, 128, 0.15);
+  background: var(--almaris-gold-light);
 }
 
 .sidebar-toggle-btn span {
   display: block;
   width: 16px;
   height: 1.5px;
-  background: #ffffff;
+  background: var(--almaris-text-dark);
 }
 
 /* Almaris Dropdown Navigation */
@@ -516,11 +529,11 @@ ul, ol {
   top: 100%;
   left: 0;
   min-width: 260px;
-  background: var(--almaris-dark-card);
-  border: 1px solid var(--almaris-gold-border);
+  background: #FFFFFF;
+  border: 1px solid var(--almaris-border);
   border-radius: var(--radius-sm);
   padding: 12px 0;
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 15px 35px rgba(45, 30, 15, 0.08);
   opacity: 0;
   visibility: hidden;
   transform: translateY(12px);
@@ -538,14 +551,14 @@ ul, ol {
   display: flex;
   flex-direction: column;
   padding: 10px 22px;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   transition: all 0.2s ease;
 }
 
 .dropdown-entry-title {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
 }
 
 .dropdown-entry-desc {
@@ -554,12 +567,12 @@ ul, ol {
 }
 
 .dropdown-entry:hover {
-  background: rgba(197, 168, 128, 0.1);
+  background: #F8F5F0;
   padding-left: 26px;
 }
 
 .dropdown-entry:hover .dropdown-entry-title {
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
 }
 
 /* Nav Actions */
@@ -573,26 +586,27 @@ ul, ol {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--almaris-border);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--almaris-card);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   transition: all 0.25s ease;
 }
 
 .sidebar-toggle-btn:hover {
   border-color: var(--almaris-gold);
-  background: rgba(197, 168, 128, 0.1);
+  background: rgba(179, 134, 76, 0.1);
 }
 
 .sidebar-toggle-btn span {
   display: block;
   width: 18px;
   height: 1.5px;
-  background: #ffffff;
+  background: var(--almaris-text-dark);
 }
 
 /* ==========================================================================
@@ -604,7 +618,7 @@ ul, ol {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(20, 24, 30, 0.65);
   backdrop-filter: blur(8px);
   z-index: 2000;
   opacity: 0;
@@ -624,8 +638,8 @@ ul, ol {
   width: 380px;
   max-width: 90vw;
   height: 100vh;
-  background: #0f1115;
-  border-right: 1px solid var(--almaris-gold-border);
+  background: #FAF7F2;
+  border-right: 1px solid var(--almaris-border);
   padding: 50px 40px;
   display: flex;
   flex-direction: column;
@@ -633,7 +647,7 @@ ul, ol {
   overflow-y: auto;
   z-index: 2001;
   transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 15px 0 50px rgba(0, 0, 0, 0.6);
+  box-shadow: 15px 0 50px rgba(45, 30, 15, 0.12);
 }
 
 .almaris-sidebar-drawer.open {
@@ -656,10 +670,11 @@ ul, ol {
   font-size: 1.8rem;
   color: var(--almaris-text-muted);
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .sidebar-close-icon:hover {
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
 }
 
 /* Mandala Filigree Crest (Screenshot 5) */
@@ -674,7 +689,7 @@ ul, ol {
   font-family: var(--font-heading);
   font-size: 1.8rem;
   letter-spacing: 5px;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   margin-bottom: 4px;
 }
 
@@ -696,16 +711,17 @@ ul, ol {
   font-size: 1.15rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--almaris-text-light);
+  color: var(--almaris-text-dark);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--almaris-border);
+  transition: all 0.25s ease;
 }
 
 .sidebar-nav-item:hover {
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   padding-left: 6px;
 }
 
@@ -714,9 +730,9 @@ ul, ol {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: rgba(197, 168, 128, 0.15);
+  background: rgba(179, 134, 76, 0.12);
   border: 1px solid var(--almaris-gold);
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   padding: 12px 24px;
   border-radius: var(--radius-pill);
   font-size: 0.82rem;
@@ -734,7 +750,7 @@ ul, ol {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: #0b0d11;
+  background-color: var(--almaris-bg);
 }
 
 /* Hero Cinematic Ken Burns Zoom-In Motion */
@@ -784,9 +800,9 @@ ul, ol {
   height: 100%;
   background: linear-gradient(
     180deg,
-    rgba(18, 20, 24, 0.6) 0%,
-    rgba(18, 20, 24, 0.45) 50%,
-    rgba(18, 20, 24, 0.9) 100%
+    rgba(20, 24, 30, 0.42) 0%,
+    rgba(20, 24, 30, 0.22) 40%,
+    rgba(20, 24, 30, 0.65) 100%
   );
   z-index: 1;
 }
@@ -799,15 +815,16 @@ ul, ol {
   max-width: 860px;
   margin: 0 auto;
   padding: 70px 40px 100px;
-  border: 1.5px solid var(--almaris-gold-border);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
   border-bottom: none;
   border-radius: 280px 280px 0 0;
-  box-shadow: var(--shadow-gold-glow);
-  backdrop-filter: blur(4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 0 0 40px rgba(179, 134, 76, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   background: radial-gradient(
     circle at center,
-    rgba(197, 168, 128, 0.08) 0%,
-    rgba(18, 20, 24, 0.4) 80%
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(20, 24, 30, 0.35) 100%
   );
   transition: transform 0.25s ease-out, box-shadow 0.4s ease;
   will-change: transform;
@@ -834,10 +851,11 @@ ul, ol {
 
 .hero-arch-desc {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.92);
   max-width: 600px;
   margin: 0 auto 32px;
   line-height: 1.7;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* ==========================================================================
@@ -851,13 +869,11 @@ ul, ol {
 }
 
 .almaris-booking-card {
-  background: rgba(26, 29, 36, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--almaris-gold-border);
+  background: #FFFFFF;
+  border: 1px solid var(--almaris-border);
   border-radius: var(--radius-sm);
   padding: 22px 32px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 50px rgba(45, 30, 15, 0.08);
 }
 
 .almaris-booking-form {
@@ -870,7 +886,7 @@ ul, ol {
 .booking-box {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid var(--almaris-border);
   padding-right: 18px;
 }
 
@@ -882,7 +898,7 @@ ul, ol {
   font-size: 0.68rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   font-weight: 600;
   margin-bottom: 6px;
 }
@@ -891,7 +907,7 @@ ul, ol {
 .booking-box-select {
   width: 100%;
   background: transparent;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   border: none;
   font-size: 0.95rem;
   font-weight: 500;
@@ -901,8 +917,8 @@ ul, ol {
 }
 
 .booking-box-select option {
-  background: var(--almaris-dark);
-  color: #ffffff;
+  background: #FFFFFF;
+  color: var(--almaris-text-dark);
 }
 
 .booking-guest-trigger {
@@ -910,7 +926,7 @@ ul, ol {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   font-size: 0.95rem;
   font-weight: 500;
 }
@@ -921,11 +937,11 @@ ul, ol {
   top: 100%;
   left: 0;
   width: 270px;
-  background: var(--almaris-dark-card);
-  border: 1px solid var(--almaris-gold-border);
+  background: #FFFFFF;
+  border: 1px solid var(--almaris-border);
   border-radius: var(--radius-sm);
   padding: 18px;
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 15px 40px rgba(45, 30, 15, 0.12);
   z-index: 100;
   margin-top: 14px;
   display: none;
@@ -940,6 +956,7 @@ ul, ol {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
+  color: var(--almaris-text-dark);
 }
 
 .popover-row:last-child {
@@ -957,16 +974,19 @@ ul, ol {
   height: 26px;
   border-radius: 50%;
   border: 1px solid var(--almaris-gold);
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
+  background: #FAF8F5;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .step-circ:hover {
   background: var(--almaris-gold);
-  color: #000000;
+  color: #FFFFFF;
 }
 
 /* ==========================================================================
@@ -1122,7 +1142,7 @@ ul, ol {
    ALMARIS ROOMS & SUITES CARDS (SCREENSHOT 1 & 3)
    ========================================================================== */
 .almaris-rooms-section {
-  background: var(--almaris-dark);
+  background: var(--almaris-bg);
 }
 
 .almaris-rooms-grid {
@@ -1132,19 +1152,20 @@ ul, ol {
 }
 
 .almaris-room-card {
-  background: var(--almaris-dark-card);
-  border: 1px solid var(--almaris-dark-border);
+  background: var(--almaris-card);
+  border: 1px solid var(--almaris-border);
   border-radius: var(--radius-sm);
   overflow: hidden;
   transition: all 0.35s ease;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-card);
 }
 
 .almaris-room-card:hover {
   transform: translateY(-6px);
-  border-color: var(--almaris-gold-border);
-  box-shadow: var(--shadow-card);
+  border-color: var(--almaris-gold);
+  box-shadow: var(--shadow-hover);
 }
 
 .room-card-photo {
@@ -1168,10 +1189,10 @@ ul, ol {
   position: absolute;
   top: 14px;
   left: 14px;
-  background: rgba(18, 20, 24, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(8px);
-  color: var(--almaris-gold);
-  border: 1px solid var(--almaris-gold-border);
+  color: var(--almaris-gold-deep);
+  border: 1px solid var(--almaris-border);
   padding: 4px 10px;
   font-size: 0.68rem;
   font-weight: 700;
@@ -1190,7 +1211,7 @@ ul, ol {
 .room-card-title {
   font-family: var(--font-heading);
   font-size: 1.4rem;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   margin-bottom: 8px;
 }
 
@@ -1206,7 +1227,7 @@ ul, ol {
 .room-card-price {
   font-family: var(--font-heading);
   font-size: 1.4rem;
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   font-weight: 600;
 }
 
@@ -1220,7 +1241,7 @@ ul, ol {
    ALMARIS EXPERIENCES & DINING SECTION
    ========================================================================== */
 .almaris-dining-section {
-  background: #0f1115;
+  background: var(--almaris-bg-subtle);
 }
 
 .dining-tiles-grid {
@@ -1230,19 +1251,20 @@ ul, ol {
 }
 
 .dining-tile-card {
-  background: var(--almaris-dark-card);
-  border: 1px solid var(--almaris-dark-border);
+  background: var(--almaris-card);
+  border: 1px solid var(--almaris-border);
   border-radius: var(--radius-sm);
   overflow: hidden;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-card);
 }
 
 .dining-tile-card:hover {
   transform: translateY(-5px);
   border-color: var(--almaris-gold);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-hover);
 }
 
 .dining-tile-media {
@@ -1272,7 +1294,7 @@ ul, ol {
 .dining-tile-title {
   font-family: var(--font-heading);
   font-size: 1.35rem;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   margin-bottom: 8px;
 }
 
@@ -1289,9 +1311,9 @@ ul, ol {
 }
 
 .filter-tab-btn {
-  background: transparent;
-  color: var(--almaris-text-muted);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--almaris-card);
+  color: var(--almaris-text-body);
+  border: 1px solid var(--almaris-border);
   border-radius: 40px;
   padding: 10px 24px;
   font-size: 0.76rem;
@@ -1300,19 +1322,21 @@ ul, ol {
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .filter-tab-btn:hover {
-  color: #ffffff;
+  color: var(--almaris-gold-deep);
   border-color: var(--almaris-gold);
+  background: #FAF7F2;
 }
 
 .filter-tab-btn.active {
   background: var(--almaris-gold);
-  color: #0b0e14;
+  color: #FFFFFF;
   border-color: var(--almaris-gold);
   font-weight: 700;
-  box-shadow: 0 4px 15px rgba(197, 168, 128, 0.3);
+  box-shadow: 0 4px 15px rgba(179, 134, 76, 0.35);
 }
 
 /* Triple Arched Accommodation Cards (Screenshot 3 & 5) */
@@ -1323,20 +1347,21 @@ ul, ol {
 }
 
 .arch-room-card {
-  background: var(--almaris-dark-card);
-  border: 1px solid var(--almaris-dark-border);
+  background: var(--almaris-card);
+  border: 1px solid var(--almaris-border);
   border-radius: var(--radius-md);
   padding: 16px 16px 28px;
   display: flex;
   flex-direction: column;
   transition: all 0.4s ease;
   position: relative;
+  box-shadow: var(--shadow-card);
 }
 
 .arch-room-card:hover {
   transform: translateY(-8px);
-  border-color: var(--almaris-gold-border);
-  box-shadow: var(--shadow-card);
+  border-color: var(--almaris-gold);
+  box-shadow: var(--shadow-hover);
 }
 
 /* Signature Almaris Vertical Arched Image Frame */
@@ -1346,8 +1371,8 @@ ul, ol {
   height: 380px;
   border-radius: 160px 160px 8px 8px;
   overflow: hidden;
-  border: 1px solid rgba(197, 168, 128, 0.25);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--almaris-border);
+  box-shadow: 0 10px 25px rgba(45, 30, 15, 0.08);
 }
 
 .arch-room-media img {
@@ -1366,38 +1391,39 @@ ul, ol {
   top: 24px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(10, 12, 16, 0.85);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
   border: 1px solid var(--almaris-gold);
-  color: #ffffff;
+  color: var(--almaris-gold-deep);
   padding: 4px 16px;
   border-radius: 30px;
   font-size: 0.66rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   white-space: nowrap;
-  font-weight: 600;
+  font-weight: 700;
   z-index: 2;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 .arch-price-badge {
   position: absolute;
   bottom: 16px;
   right: 16px;
-  background: rgba(14, 16, 20, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  border: 1px solid var(--almaris-gold-border);
+  border: 1px solid var(--almaris-border);
   border-radius: 30px;
   padding: 6px 16px;
   display: flex;
   align-items: baseline;
   gap: 4px;
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 600;
   z-index: 2;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 15px rgba(45, 30, 15, 0.08);
 }
 
 .arch-price-badge span {
@@ -1433,14 +1459,14 @@ ul, ol {
 .arch-room-title {
   font-family: var(--font-heading);
   font-size: 1.35rem;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   margin-bottom: 12px;
   line-height: 1.3;
 }
 
 .arch-room-desc {
   font-size: 0.85rem;
-  color: var(--almaris-text-muted);
+  color: var(--almaris-text-body);
   line-height: 1.6;
   margin-bottom: 22px;
   flex-grow: 1;
@@ -1450,7 +1476,7 @@ ul, ol {
    HOTEL FACILITIES 6-BOX GRID (SCREENSHOT 2)
    ========================================================================== */
 .almaris-facilities-section {
-  background: #0b0d11;
+  background: var(--almaris-bg-subtle);
   position: relative;
 }
 
@@ -1461,13 +1487,14 @@ ul, ol {
 }
 
 .facility-box {
-  background: var(--almaris-dark-card);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--almaris-card);
+  border: 1px solid var(--almaris-border);
   border-radius: var(--radius-sm);
   padding: 38px 30px;
   position: relative;
   transition: all 0.35s ease;
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
 .facility-box::before {
@@ -1483,9 +1510,9 @@ ul, ol {
 }
 
 .facility-box:hover {
-  border-color: var(--almaris-gold-border);
+  border-color: var(--almaris-gold);
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--shadow-hover);
 }
 
 .facility-box:hover::before {
@@ -1498,7 +1525,7 @@ ul, ol {
   right: 28px;
   font-family: var(--font-heading);
   font-size: 1.1rem;
-  color: rgba(197, 168, 128, 0.25);
+  color: rgba(179, 134, 76, 0.3);
   font-weight: 600;
 }
 
@@ -1507,31 +1534,31 @@ ul, ol {
   height: 56px;
   border-radius: 50%;
   border: 1px solid var(--almaris-gold);
-  background: rgba(197, 168, 128, 0.08);
+  background: rgba(179, 134, 76, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   margin-bottom: 22px;
   transition: all 0.3s ease;
 }
 
 .facility-box:hover .facility-icon-wrap {
   background: var(--almaris-gold);
-  color: #0b0e14;
-  box-shadow: 0 4px 15px rgba(197, 168, 128, 0.35);
+  color: #FFFFFF;
+  box-shadow: 0 4px 15px rgba(179, 134, 76, 0.35);
 }
 
 .facility-title {
   font-family: var(--font-heading);
   font-size: 1.25rem;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   margin-bottom: 10px;
 }
 
 .facility-desc {
   font-size: 0.86rem;
-  color: var(--almaris-text-muted);
+  color: var(--almaris-text-body);
   line-height: 1.65;
 }
 
@@ -1539,9 +1566,9 @@ ul, ol {
    INSTAGRAM FEED STRIP (SCREENSHOT 3)
    ========================================================================== */
 .instagram-section {
-  background: #090a0d;
+  background: var(--almaris-bg);
   padding-top: 60px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--almaris-border);
 }
 
 .instagram-header {
@@ -1555,13 +1582,13 @@ ul, ol {
   gap: 8px;
   font-family: var(--font-heading);
   font-size: 1.5rem;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   letter-spacing: 1px;
   transition: color 0.25s ease;
 }
 
 .instagram-handle:hover {
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
 }
 
 .instagram-grid-6 {
@@ -1587,7 +1614,7 @@ ul, ol {
 .instagram-hover-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 12, 16, 0.72);
+  background: rgba(20, 24, 30, 0.65);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1627,11 +1654,11 @@ ul, ol {
    ALMARIS GRAND FOOTER
    ========================================================================== */
 .almaris-footer {
-  background: #090a0d;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #EDE6DC;
+  border-top: 1px solid #DFD5C6;
   padding-top: 80px;
   padding-bottom: 30px;
-  color: var(--almaris-text-muted);
+  color: #4E555D;
   font-size: 0.85rem;
 }
 
@@ -1645,7 +1672,7 @@ ul, ol {
 .footer-heading {
   font-family: var(--font-heading);
   font-size: 1.1rem;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   margin-bottom: 20px;
   position: relative;
   padding-bottom: 10px;
@@ -1667,8 +1694,13 @@ ul, ol {
   gap: 10px;
 }
 
+.footer-links-list a {
+  color: #4E555D;
+  transition: all 0.2s ease;
+}
+
 .footer-links-list a:hover {
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   padding-left: 4px;
 }
 
@@ -1691,7 +1723,7 @@ ul, ol {
 .sub-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(14, 16, 20, 0.82) 0%, rgba(14, 16, 20, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(20, 24, 30, 0.55) 0%, rgba(20, 24, 30, 0.75) 100%);
   z-index: 1;
 }
 
@@ -1714,7 +1746,7 @@ ul, ol {
 }
 
 .sub-hero-breadcrumb a {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.75);
   transition: color 0.2s ease;
 }
 
@@ -1729,14 +1761,16 @@ ul, ol {
   color: #ffffff;
   line-height: 1.2;
   margin-bottom: 14px;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
 }
 
 .sub-hero-desc {
   font-size: 0.95rem;
-  color: var(--almaris-text-muted);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.7;
   max-width: 620px;
   margin: 0 auto;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* ==========================================================================
@@ -1762,7 +1796,7 @@ ul, ol {
   position: relative;
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--almaris-gold-border);
+  border: 1px solid var(--almaris-border);
   box-shadow: var(--shadow-card);
   height: 440px;
 }
@@ -1782,10 +1816,10 @@ ul, ol {
   position: absolute;
   top: 20px;
   left: 20px;
-  background: rgba(14, 16, 20, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
   border: 1px solid var(--almaris-gold);
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   padding: 6px 16px;
   border-radius: 30px;
   font-size: 0.7rem;
@@ -1793,6 +1827,7 @@ ul, ol {
   letter-spacing: 2px;
   text-transform: uppercase;
   z-index: 2;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .sanctuary-feature-chips {
@@ -1803,12 +1838,13 @@ ul, ol {
 }
 
 .sanctuary-feature-chip {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #FFFFFF;
+  border: 1px solid var(--almaris-border);
   padding: 6px 14px;
   border-radius: 4px;
   font-size: 0.75rem;
-  color: #e5e7eb;
+  color: var(--almaris-text-dark);
+  font-weight: 500;
 }
 
 /* ==========================================================================
@@ -1822,8 +1858,8 @@ ul, ol {
 }
 
 .spa-ritual-card {
-  background: var(--almaris-dark-card);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--almaris-card);
+  border: 1px solid var(--almaris-border);
   border-radius: var(--radius-sm);
   padding: 28px;
   display: flex;
@@ -1831,18 +1867,19 @@ ul, ol {
   align-items: flex-start;
   gap: 20px;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-card);
 }
 
 .spa-ritual-card:hover {
-  border-color: var(--almaris-gold-border);
+  border-color: var(--almaris-gold);
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-hover);
 }
 
 .spa-ritual-title {
   font-family: var(--font-heading);
   font-size: 1.2rem;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   margin-bottom: 6px;
 }
 
@@ -1850,22 +1887,24 @@ ul, ol {
   font-size: 0.72rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   margin-bottom: 8px;
   display: block;
+  font-weight: 600;
 }
 
 .spa-ritual-desc {
   font-size: 0.84rem;
-  color: var(--almaris-text-muted);
+  color: var(--almaris-text-body);
   line-height: 1.6;
 }
 
 .spa-ritual-price {
   font-family: var(--font-heading);
   font-size: 1.35rem;
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   white-space: nowrap;
+  font-weight: 600;
 }
 
 /* ==========================================================================
@@ -1878,21 +1917,23 @@ ul, ol {
 }
 
 .contact-card-box {
-  background: var(--almaris-dark-card);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--almaris-card);
+  border: 1px solid var(--almaris-border);
   border-radius: var(--radius-sm);
   padding: 28px;
   margin-bottom: 20px;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-card);
 }
 
 .contact-card-box:hover {
-  border-color: var(--almaris-gold-border);
+  border-color: var(--almaris-gold);
+  box-shadow: var(--shadow-hover);
 }
 
 .contact-form-card {
-  background: var(--almaris-dark-card);
-  border: 1px solid var(--almaris-gold-border);
+  background: var(--almaris-card);
+  border: 1px solid var(--almaris-border);
   border-radius: var(--radius-sm);
   padding: 38px 34px;
   box-shadow: var(--shadow-card);
@@ -1907,32 +1948,84 @@ ul, ol {
   font-size: 0.72rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--almaris-gold);
+  color: var(--almaris-gold-deep);
   font-weight: 600;
   margin-bottom: 8px;
 }
 
 .almaris-text-input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #FAF8F5;
+  border: 1px solid var(--almaris-border);
   border-radius: 4px;
   padding: 12px 16px;
-  color: #ffffff;
+  color: var(--almaris-text-dark);
   font-size: 0.88rem;
   font-family: var(--font-body);
-  transition: border-color 0.25s ease;
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
 
 .almaris-text-input:focus {
   outline: none;
   border-color: var(--almaris-gold);
-  background: rgba(255, 255, 255, 0.06);
+  background: #FFFFFF;
 }
 
 textarea.almaris-text-input {
   min-height: 120px;
   resize: vertical;
+}
+
+/* Modal Luxury Card Class */
+.almaris-modal-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #FFFFFF;
+  border: 1px solid var(--almaris-gold);
+  border-radius: var(--radius-sm);
+  padding: 36px;
+  width: 90%;
+  max-width: 550px;
+  z-index: 3000;
+  box-shadow: 0 25px 60px rgba(45, 30, 15, 0.2);
+}
+
+.almaris-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: var(--almaris-text-dark);
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.almaris-modal-close:hover {
+  color: var(--almaris-gold-deep);
+}
+
+.almaris-modal-title {
+  font-family: var(--font-heading);
+  color: var(--almaris-text-dark);
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.almaris-modal-perks {
+  background: #FAF8F5;
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  color: var(--almaris-text-dark);
+  border: 1px solid var(--almaris-border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 /* ==========================================================================
@@ -1953,7 +2046,7 @@ textarea.almaris-text-input {
   }
   .booking-box {
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--almaris-border);
     padding-bottom: 10px;
   }
   .almaris-dual-arch-grid {

@@ -306,7 +306,7 @@ function showToast(msg) {
   if (!toast) {
     toast = document.createElement('div');
     toast.id = 'almarisToast';
-    toast.style.cssText = 'position: fixed; bottom: 24px; right: 24px; background: #1a1d24; border: 1px solid #c5a880; color: #fff; padding: 14px 24px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); z-index: 4000; font-size: 0.85rem; transform: translateY(20px); opacity: 0; transition: all 0.3s ease;';
+    toast.style.cssText = 'position: fixed; bottom: 24px; right: 24px; background: #FFFFFF; border: 1px solid #B3864C; color: #1A1D20; padding: 14px 24px; border-radius: 4px; box-shadow: 0 10px 30px rgba(45,30,15,0.15); z-index: 4000; font-size: 0.88rem; font-weight: 500; transform: translateY(20px); opacity: 0; transition: all 0.3s ease;';
     document.body.appendChild(toast);
   }
 

@@ -273,7 +273,7 @@
             <!-- Stepper Popover -->
             <div class="booking-guest-popover" id="guestPopover">
               <div class="popover-row">
-                <span style="font-size: 0.85rem; color: #fff;">Adults (12+)</span>
+                <span style="font-size: 0.85rem; color: var(--almaris-text-dark);">Adults (12+)</span>
                 <div class="stepper-ctrls">
                   <button type="button" class="step-circ" id="adultDec">-</button>
                   <span id="adultVal" style="font-weight: 600;">2</span>
@@ -281,7 +281,7 @@
                 </div>
               </div>
               <div class="popover-row">
-                <span style="font-size: 0.85rem; color: #fff;">Children (0-11)</span>
+                <span style="font-size: 0.85rem; color: var(--almaris-text-dark);">Children (0-11)</span>
                 <div class="stepper-ctrls">
                   <button type="button" class="step-circ" id="childDec">-</button>
                   <span id="childVal" style="font-weight: 600;">0</span>
@@ -717,7 +717,7 @@
   <!-- ==========================================================================
        CITRON SENSES WELLNESS & CELEBRATIONS
        ========================================================================== -->
-  <section class="section-padding" id="wellness" style="background: var(--almaris-dark);">
+  <section class="section-padding" id="wellness" style="background: var(--almaris-bg-subtle);">
     <div class="container">
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
         <div>
@@ -821,13 +821,13 @@
         <!-- Col 1 -->
         <div>
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-            <span style="font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 4px; color: #fff;">CITRUS</span>
+            <span style="font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 4px; color: var(--almaris-text-dark);">CITRUS</span>
             <div style="color: var(--almaris-gold); font-size: 0.75rem;">★ ★ ★ ★ ★</div>
           </div>
           <p style="font-size: 0.85rem; line-height: 1.7; color: var(--almaris-text-muted); margin-bottom: 20px;">
             Citrus Leisure PLC is a listed Sri Lankan hospitality group operating luxury beachfront resorts and boutique city hotels benchmarked to international 5-star standards.
           </p>
-          <p style="font-size: 0.8rem; color: var(--almaris-gold);">Head Office: +94 11 575 5000</p>
+          <p style="font-size: 0.8rem; color: var(--almaris-gold-deep); font-weight: 600;">Head Office: +94 11 575 5000</p>
         </div>
 
         <!-- Col 2: Sanctuaries -->
@@ -866,7 +866,7 @@
         </div>
       </div>
 
-      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 25px; flex-wrap: wrap; gap: 14px; font-size: 0.75rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--almaris-border); padding-top: 25px; flex-wrap: wrap; gap: 14px; font-size: 0.75rem;">
         <div>© 2026 Citrus Leisure PLC. All Rights Reserved. Almaris Luxury Hotel Theme.</div>
         <div style="display: flex; gap: 20px;">
           <a href="#">Privacy Policy</a>
@@ -881,12 +881,12 @@
        MODALS
        ========================================================================== -->
   <div class="almaris-sidebar-overlay" id="bookingModalOverlay">
-    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1a1d24; border: 1px solid var(--almaris-gold); border-radius: var(--radius-sm); padding: 36px; width: 90%; max-width: 550px; z-index: 3000; box-shadow: 0 25px 60px rgba(0,0,0,0.8);">
-      <button style="position: absolute; top: 16px; right: 16px; color: #fff; font-size: 1.5rem;" onclick="closeModal()">&times;</button>
-      <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.6rem; margin-bottom: 6px;" id="modalRoomTitle">Reserve Your Stay</h3>
-      <p style="font-size: 0.85rem; color: var(--almaris-gold); margin-bottom: 20px;" id="modalHotelSub">Direct Member Rate Applied</p>
+    <div class="almaris-modal-card">
+      <button class="almaris-modal-close" onclick="closeModal()">&times;</button>
+      <h3 class="almaris-modal-title" id="modalRoomTitle">Reserve Your Stay</h3>
+      <p style="font-size: 0.85rem; color: var(--almaris-gold-deep); margin-bottom: 20px; font-weight: 600;" id="modalHotelSub">Direct Member Rate Applied</p>
       
-      <div style="background: rgba(255,255,255,0.04); padding: 16px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem; color: #e5e7eb;">
+      <div class="almaris-modal-perks">
         <div>✨ Best Rate Guarantee</div>
         <div>🥂 Complimentary Welcome High Tea</div>
         <div>💆 $30 Citron Senses Spa Credit Included</div>

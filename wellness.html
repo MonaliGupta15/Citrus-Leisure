@@ -202,7 +202,7 @@
   </section>
 
   <!-- Overview Section -->
-  <section class="section-padding" style="background: var(--almaris-dark-card);">
+  <section class="section-padding" style="background: var(--almaris-bg-subtle);">
     <div class="container">
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
         <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--almaris-gold-border); box-shadow: var(--shadow-card);">
@@ -214,7 +214,7 @@
           <p class="almaris-desc" style="margin-bottom: 20px;">
             Citron Senses Spa draws upon the restorative powers of traditional Balinese massage, Ayurvedic herbal compresses, and oceanic mineral scrubs. All therapists are certified Balinese masters trained in pressure points, rhythmic palming, and customized aromatherapy.
           </p>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; font-size: 0.85rem; color: #fff;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; font-size: 0.85rem; color: var(--almaris-text-dark); font-weight: 500;">
             <div>🌿 Organic Ceylon Botanicals</div>
             <div>🌊 Oceanfront Treatment Suites</div>
             <div>🧖 Herbal Steam Inhalation</div>
@@ -319,13 +319,13 @@
       <div class="footer-top-row">
         <div>
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-            <span style="font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 4px; color: #fff;">CITRUS</span>
+            <span style="font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 4px; color: var(--almaris-text-dark);">CITRUS</span>
             <div style="color: var(--almaris-gold); font-size: 0.75rem;">★ ★ ★ ★ ★</div>
           </div>
           <p style="font-size: 0.85rem; line-height: 1.7; color: var(--almaris-text-muted); margin-bottom: 20px;">
             Citrus Leisure PLC is a listed Sri Lankan hospitality group operating luxury beachfront resorts and boutique city hotels benchmarked to international 5-star standards.
           </p>
-          <p style="font-size: 0.8rem; color: var(--almaris-gold);">Head Office: +94 11 575 5000</p>
+          <p style="font-size: 0.8rem; color: var(--almaris-gold-deep); font-weight: 600;">Head Office: +94 11 575 5000</p>
         </div>
 
         <div>
@@ -361,7 +361,7 @@
         </div>
       </div>
 
-      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 25px; flex-wrap: wrap; gap: 14px; font-size: 0.75rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--almaris-border); padding-top: 25px; flex-wrap: wrap; gap: 14px; font-size: 0.75rem;">
         <div>© 2026 Citrus Leisure PLC. All Rights Reserved. Almaris Luxury Hotel Theme.</div>
         <div style="display: flex; gap: 20px;">
           <a href="#">Privacy Policy</a>
@@ -374,12 +374,12 @@
 
   <!-- Booking Modal -->
   <div class="almaris-sidebar-overlay" id="bookingModalOverlay">
-    <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1a1d24; border: 1px solid var(--almaris-gold); border-radius: var(--radius-sm); padding: 36px; width: 90%; max-width: 550px; z-index: 3000; box-shadow: 0 25px 60px rgba(0,0,0,0.8);">
-      <button style="position: absolute; top: 16px; right: 16px; color: #fff; font-size: 1.5rem;" onclick="closeModal()">&times;</button>
-      <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.6rem; margin-bottom: 6px;" id="modalRoomTitle">Reserve Ritual</h3>
-      <p style="font-size: 0.85rem; color: var(--almaris-gold); margin-bottom: 20px;" id="modalHotelSub">Citron Senses Balinese Spa</p>
+    <div class="almaris-modal-card">
+      <button class="almaris-modal-close" onclick="closeModal()">&times;</button>
+      <h3 class="almaris-modal-title" id="modalRoomTitle">Reserve Ritual</h3>
+      <p style="font-size: 0.85rem; color: var(--almaris-gold-deep); margin-bottom: 20px; font-weight: 600;" id="modalHotelSub">Citron Senses Balinese Spa</p>
       
-      <div style="background: rgba(255,255,255,0.04); padding: 16px; border-radius: 4px; margin-bottom: 20px; font-size: 0.85rem; color: #e5e7eb;">
+      <div class="almaris-modal-perks">
         <div>💆 Certified Balinese Master Therapist</div>
         <div>🌿 Complimentary Herbal Steam Session</div>
         <div>🍵 Organic Ceylon Ginger Infusion Tea</div>
