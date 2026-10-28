@@ -470,37 +470,57 @@ function initScrollAnimations() {
     }
   });
 
-  // 2. Query all elements to be observed
+  // 2. Also register hero arch stage and booking bar for bi-directional re-animation
+  const archStage = document.querySelector('.almaris-arch-stage');
+  if (archStage && !archStage.classList.contains('reveal-zoom-in')) {
+    archStage.classList.add('reveal-zoom-in');
+  }
+
+  const bookingBar = document.querySelector('.almaris-booking-bar-wrapper');
+  if (bookingBar && !bookingBar.classList.contains('reveal-fade-up')) {
+    bookingBar.classList.add('reveal-fade-up');
+  }
+
+  // Query all animated elements
   const animTargets = document.querySelectorAll(
     '.reveal-fade-up, .reveal-slide-left, .reveal-slide-right, .reveal-zoom-in, .reveal-section'
   );
 
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries, obs) => {
+    // Bi-directional observer: animates both scrolling down AND scrolling up!
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('revealed');
-          // Once revealed, keep it permanently visible
-          obs.unobserve(entry.target);
+        } else {
+          // When scrolled out of viewport, reset so it smoothly re-animates when scrolling back in from top or bottom
+          entry.target.classList.remove('revealed');
         }
       });
     }, {
       root: null,
-      rootMargin: '0px 0px -40px 0px',
-      threshold: 0.1
+      rootMargin: '0px 0px -30px 0px',
+      threshold: 0.12
     });
 
     animTargets.forEach(el => {
-      // If already in viewport on initial load, reveal immediately
+      observer.observe(el);
+      // If in viewport on load, reveal immediately
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 30 && rect.bottom > 0) {
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
         el.classList.add('revealed');
-      } else {
-        observer.observe(el);
       }
     });
+
+    // Safety for very top of the page
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < 80) {
+        if (archStage) archStage.classList.add('revealed');
+        if (bookingBar) bookingBar.classList.add('revealed');
+      }
+    }, { passive: true });
   } else {
-    // Graceful fallback for older browsers
+    // Fallback for older browsers
     animTargets.forEach(el => el.classList.add('revealed'));
   }
 }
