@@ -24,29 +24,38 @@ function initHeaderScroll() {
   let lastScrollY = window.scrollY;
   let ticking = false;
 
+  // Initial state: hide at top so hero is clear and unobstructed
+  if (window.scrollY <= 60) {
+    header.classList.add('nav-hidden');
+    header.classList.remove('nav-visible');
+  } else {
+    header.classList.add('nav-visible');
+    header.classList.remove('nav-hidden');
+    header.classList.add('scrolled');
+  }
+
   window.addEventListener('scroll', () => {
     if (!ticking) {
       window.requestAnimationFrame(() => {
         const currentScrollY = window.scrollY;
         const delta = currentScrollY - lastScrollY;
 
-        // Top of page: always visible and natural
-        if (currentScrollY <= 20) {
-          header.classList.remove('nav-hidden');
+        // When going up to the top (scrollY <= 60):
+        // "navbar ko gayab kr do jb upar jake to"
+        if (currentScrollY <= 60) {
+          header.classList.add('nav-hidden');
           header.classList.remove('nav-visible');
           header.classList.remove('scrolled');
         } else {
           header.classList.add('scrolled');
 
-          // Scroll DOWN (reading down the page, delta > 6):
-          // Navbar comes back smoothly into view
-          if (delta > 6) {
+          // Scroll DOWN ("jb wapas niche aaye to show kr de"):
+          if (delta > 4) {
             header.classList.remove('nav-hidden');
             header.classList.add('nav-visible');
           } 
-          // Scroll UP (scrolling up towards previous section, delta < -6):
-          // Navbar goes invisible smoothly
-          else if (delta < -6) {
+          // Scroll UP ("jb upar jaye to gayab kr do"):
+          else if (delta < -4) {
             header.classList.remove('nav-visible');
             header.classList.add('nav-hidden');
           }
@@ -56,6 +65,14 @@ function initHeaderScroll() {
         ticking = false;
       });
       ticking = true;
+    }
+  }, { passive: true });
+
+  // Top Edge Reveal: when user moves mouse to the top edge (clientY < 35), reveal navbar
+  window.addEventListener('mousemove', (e) => {
+    if (e.clientY < 35) {
+      header.classList.remove('nav-hidden');
+      header.classList.add('nav-visible');
     }
   }, { passive: true });
 }
