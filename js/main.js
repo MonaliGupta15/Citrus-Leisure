@@ -15,17 +15,47 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. STICKY HEADER
+   1. STICKY HEADER WITH DYNAMIC SCROLL HIDE/SHOW
    ========================================================================== */
 function initHeaderScroll() {
   const header = document.getElementById('almarisHeader');
   if (!header) return;
 
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY;
+
+        // Top of page: always visible and natural
+        if (currentScrollY <= 20) {
+          header.classList.remove('nav-hidden');
+          header.classList.remove('nav-visible');
+          header.classList.remove('scrolled');
+        } else {
+          header.classList.add('scrolled');
+
+          // Scroll DOWN (reading down the page, delta > 6):
+          // Navbar comes back smoothly into view
+          if (delta > 6) {
+            header.classList.remove('nav-hidden');
+            header.classList.add('nav-visible');
+          } 
+          // Scroll UP (scrolling up towards previous section, delta < -6):
+          // Navbar goes invisible smoothly
+          else if (delta < -6) {
+            header.classList.remove('nav-visible');
+            header.classList.add('nav-hidden');
+          }
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+      });
+      ticking = true;
     }
   }, { passive: true });
 }
@@ -84,14 +114,24 @@ const heroData = {
 };
 
 window.switchHeroSlide = (key) => {
-  const slides = document.querySelectorAll('.hero-slide-item');
-  slides.forEach(s => {
-    if (s.getAttribute('data-slide') === key) {
-      s.classList.remove('active');
-      void s.offsetWidth; // Force reflow so Ken Burns zoom restarts from scale(1)
-      s.classList.add('active');
-    } else {
-      s.classList.remove('active');
+  const stages = document.querySelectorAll('.hero-slider-stage, .arch-capsule-media');
+  stages.forEach(stage => {
+    const currentActive = stage.querySelector('.hero-slide-item.active');
+    const nextSlide = stage.querySelector(`.hero-slide-item[data-slide="${key}"]`);
+
+    if (currentActive === nextSlide) return;
+
+    if (currentActive) {
+      currentActive.classList.remove('active');
+      currentActive.classList.add('leaving');
+      setTimeout(() => {
+        currentActive.classList.remove('leaving');
+      }, 1800);
+    }
+
+    if (nextSlide) {
+      nextSlide.classList.remove('leaving');
+      nextSlide.classList.add('active');
     }
   });
 
@@ -100,14 +140,21 @@ window.switchHeroSlide = (key) => {
   const data = heroData[key] || heroData.all;
 
   if (titleEl && descEl) {
+    titleEl.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+    descEl.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
     titleEl.style.opacity = '0';
+    titleEl.style.transform = 'translateY(6px)';
     descEl.style.opacity = '0';
+    descEl.style.transform = 'translateY(6px)';
+
     setTimeout(() => {
       titleEl.textContent = data.title;
       descEl.textContent = data.desc;
       titleEl.style.opacity = '1';
+      titleEl.style.transform = 'translateY(0)';
       descEl.style.opacity = '1';
-    }, 200);
+      descEl.style.transform = 'translateY(0)';
+    }, 350);
   }
 };
 

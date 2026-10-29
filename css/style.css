@@ -345,7 +345,8 @@ ul, ol {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(179, 134, 76, 0.18);
-  transition: all 0.35s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  will-change: transform, opacity;
 }
 
 .almaris-header .container {
@@ -358,6 +359,18 @@ ul, ol {
   background: rgba(255, 255, 255, 0.98);
   border-bottom: 1px solid var(--almaris-border);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.almaris-header.nav-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.almaris-header.nav-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .almaris-nav {
@@ -782,21 +795,29 @@ ul, ol {
   background-size: cover;
   background-position: center;
   opacity: 0;
+  z-index: 0;
   transform: scale(1);
-  transition: opacity 1.6s ease-in-out;
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform, opacity;
+}
+
+.hero-slide-item.leaving {
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-slide-item.active {
   opacity: 1;
-  animation: heroKenBurnsZoom 9.5s cubic-bezier(0.16, 0.84, 0.44, 1) forwards;
+  z-index: 2;
+  animation: heroKenBurnsZoom 10s cubic-bezier(0.16, 0.84, 0.44, 1) forwards;
 }
 
-/* Hero Background Stage with Depth Bokeh Blur */
+/* Hero Background Stage with Depth Bokeh Blur (Subtle & Elegant) */
 .hero-slider-stage.hero-bg-blur-stage {
-  filter: blur(12px) brightness(0.68) saturate(115%);
-  -webkit-filter: blur(12px) brightness(0.68) saturate(115%);
-  transform: scale(1.08);
+  filter: blur(5px) brightness(0.78) saturate(110%);
+  -webkit-filter: blur(5px) brightness(0.78) saturate(110%);
+  transform: scale(1.04);
 }
 
 .hero-dark-vignette {
@@ -824,21 +845,21 @@ ul, ol {
   margin: 0 auto;
   border-radius: 280px 280px 24px 24px;
   overflow: hidden;
-  border: 1.5px solid rgba(212, 175, 55, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 
-    0 25px 65px rgba(0, 0, 0, 0.45),
-    0 0 35px rgba(212, 175, 55, 0.25),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(212, 175, 55, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
   transition: transform 0.25s ease-out, box-shadow 0.35s ease, border-color 0.35s ease;
   will-change: transform;
 }
 
 .almaris-arch-stage:hover {
-  border-color: rgba(212, 175, 55, 0.9);
+  border-color: rgba(212, 175, 55, 0.8);
   box-shadow: 
-    0 32px 80px rgba(0, 0, 0, 0.55),
-    0 0 50px rgba(212, 175, 55, 0.38),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+    0 28px 70px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(212, 175, 55, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.28);
 }
 
 /* Sharp Inner Image Stage (100% Crisp / Crystal Clear Focus) */
@@ -873,9 +894,9 @@ ul, ol {
   height: 100%;
   background: linear-gradient(
     180deg,
-    rgba(12, 16, 22, 0.28) 0%,
-    rgba(12, 16, 22, 0.16) 35%,
-    rgba(12, 16, 22, 0.62) 100%
+    rgba(12, 16, 22, 0.2) 0%,
+    rgba(12, 16, 22, 0.12) 35%,
+    rgba(12, 16, 22, 0.55) 100%
   );
   z-index: 1;
   pointer-events: none;
