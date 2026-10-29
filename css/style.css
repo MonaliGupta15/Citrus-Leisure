@@ -792,7 +792,80 @@ ul, ol {
   animation: heroKenBurnsZoom 9.5s cubic-bezier(0.16, 0.84, 0.44, 1) forwards;
 }
 
+/* Hero Background Stage with Depth Bokeh Blur */
+.hero-slider-stage.hero-bg-blur-stage {
+  filter: blur(12px) brightness(0.68) saturate(115%);
+  -webkit-filter: blur(12px) brightness(0.68) saturate(115%);
+  transform: scale(1.08);
+}
+
 .hero-dark-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(15, 20, 26, 0.18) 0%,
+    rgba(15, 20, 26, 0.42) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Center Architectural Capsule Focus Portal (Clear Sharp Window) */
+.almaris-arch-stage {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 860px;
+  max-width: 90vw;
+  margin: 0 auto;
+  border-radius: 280px 280px 24px 24px;
+  overflow: hidden;
+  border: 1.5px solid rgba(212, 175, 55, 0.65);
+  box-shadow: 
+    0 25px 65px rgba(0, 0, 0, 0.45),
+    0 0 35px rgba(212, 175, 55, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.25s ease-out, box-shadow 0.35s ease, border-color 0.35s ease;
+  will-change: transform;
+}
+
+.almaris-arch-stage:hover {
+  border-color: rgba(212, 175, 55, 0.9);
+  box-shadow: 
+    0 32px 80px rgba(0, 0, 0, 0.55),
+    0 0 50px rgba(212, 175, 55, 0.38),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+/* Sharp Inner Image Stage (100% Crisp / Crystal Clear Focus) */
+.arch-capsule-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.arch-capsule-media .hero-slide-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* Inner protective gradient over the clear image so text pops */
+.arch-capsule-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -800,36 +873,19 @@ ul, ol {
   height: 100%;
   background: linear-gradient(
     180deg,
-    rgba(15, 20, 26, 0.38) 0%,
-    rgba(15, 20, 26, 0.14) 35%,
-    rgba(15, 20, 26, 0.28) 65%,
-    rgba(15, 20, 26, 0.58) 100%
+    rgba(12, 16, 22, 0.28) 0%,
+    rgba(12, 16, 22, 0.16) 35%,
+    rgba(12, 16, 22, 0.62) 100%
   );
   z-index: 1;
+  pointer-events: none;
 }
 
-/* Hero Center Content — Blended Seamlessly with Background */
-.almaris-arch-stage {
+/* Foreground Content inside the Capsule */
+.arch-capsule-content {
   position: relative;
   z-index: 2;
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 50px 30px 65px;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  background: radial-gradient(
-    ellipse 75% 60% at 50% 50%,
-    rgba(10, 14, 20, 0.38) 0%,
-    rgba(10, 14, 20, 0.16) 45%,
-    rgba(10, 14, 20, 0) 75%
-  );
-  overflow: visible;
-  transition: transform 0.25s ease-out;
-  will-change: transform;
+  padding: 72px 42px 90px;
 }
 
 .arch-stars-row {
@@ -2120,7 +2176,11 @@ textarea.almaris-text-input {
 
 @media (max-width: 768px) {
   .almaris-arch-stage {
-    padding: 35px 18px 55px;
+    border-radius: 140px 140px 18px 18px;
+    width: 92vw;
+  }
+  .arch-capsule-content {
+    padding: 45px 20px 65px;
   }
   .hero-arch-title {
     font-size: 2.1rem;
@@ -2184,7 +2244,11 @@ textarea.almaris-text-input {
     padding: 30px 24px;
   }
   .almaris-arch-stage {
-    padding: 25px 12px 45px;
+    border-radius: 100px 100px 14px 14px;
+    width: 94vw;
+  }
+  .arch-capsule-content {
+    padding: 35px 14px 50px;
   }
   .hero-arch-title {
     font-size: 1.75rem;
