@@ -24,14 +24,12 @@ function initHeaderScroll() {
   let lastScrollY = window.scrollY;
   let ticking = false;
 
-  // Initial state: hide at top so hero is clear and unobstructed
-  if (window.scrollY <= 60) {
-    header.classList.add('nav-hidden');
-    header.classList.remove('nav-visible');
-  } else {
-    header.classList.add('nav-visible');
-    header.classList.remove('nav-hidden');
+  // On page load: ALWAYS make sure header is visible and interactive
+  header.classList.remove('nav-hidden');
+  if (window.scrollY > 30) {
     header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
   }
 
   window.addEventListener('scroll', () => {
@@ -40,22 +38,22 @@ function initHeaderScroll() {
         const currentScrollY = window.scrollY;
         const delta = currentScrollY - lastScrollY;
 
-        // When going up to the top (scrollY <= 60):
-        // "navbar ko gayab kr do jb upar jake to"
-        if (currentScrollY <= 60) {
-          header.classList.add('nav-hidden');
+        // When at or near the top of the page (currentScrollY <= 40):
+        // ALWAYS visible and natural!
+        if (currentScrollY <= 40) {
+          header.classList.remove('nav-hidden');
           header.classList.remove('nav-visible');
           header.classList.remove('scrolled');
         } else {
           header.classList.add('scrolled');
 
           // Scroll DOWN ("jb wapas niche aaye to show kr de"):
-          if (delta > 4) {
+          if (delta > 6) {
             header.classList.remove('nav-hidden');
             header.classList.add('nav-visible');
           } 
           // Scroll UP ("jb upar jaye to gayab kr do"):
-          else if (delta < -4) {
+          else if (delta < -6) {
             header.classList.remove('nav-visible');
             header.classList.add('nav-hidden');
           }
@@ -68,7 +66,15 @@ function initHeaderScroll() {
     }
   }, { passive: true });
 
-  // Top Edge Reveal: when user moves mouse to the top edge (clientY < 35), reveal navbar
+  // Mobile Top Edge Reveal: tapping near top (clientY < 55) reveals navbar immediately
+  window.addEventListener('touchstart', (e) => {
+    if (e.touches && e.touches[0] && e.touches[0].clientY < 55) {
+      header.classList.remove('nav-hidden');
+      header.classList.add('nav-visible');
+    }
+  }, { passive: true });
+
+  // Desktop Top Edge Reveal: moving mouse to top edge (clientY < 35) reveals navbar
   window.addEventListener('mousemove', (e) => {
     if (e.clientY < 35) {
       header.classList.remove('nav-hidden');
@@ -88,24 +94,36 @@ function initSidebarDrawer() {
 
   if (!openBtn || !drawer || !overlay) return;
 
-  const open = () => {
+  const open = (e) => {
+    if (e) e.preventDefault();
     drawer.classList.add('open');
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   };
 
-  const close = () => {
+  const close = (e) => {
+    if (e) e.preventDefault();
     drawer.classList.remove('open');
     overlay.classList.remove('active');
     document.body.style.overflow = '';
   };
 
   openBtn.addEventListener('click', open);
-  if (closeBtn) closeBtn.addEventListener('click', close);
+  openBtn.addEventListener('touchend', open);
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', close);
+    closeBtn.addEventListener('touchend', close);
+  }
+
   overlay.addEventListener('click', close);
+  overlay.addEventListener('touchend', close);
 
   const links = drawer.querySelectorAll('a');
-  links.forEach(l => l.addEventListener('click', close));
+  links.forEach(l => {
+    l.addEventListener('click', close);
+    l.addEventListener('touchend', close);
+  });
 }
 
 /* ==========================================================================
