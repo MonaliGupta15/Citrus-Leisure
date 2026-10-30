@@ -213,8 +213,41 @@
     <!-- Soft Ambient Warmth Vignette over background -->
     <div class="hero-dark-vignette"></div>
 
+    <!-- Ambient Golden Dust Luminous Particle Canvas -->
+    <canvas id="heroDustCanvas" class="hero-dust-canvas"></canvas>
+
+    <!-- Floating 3D Micro-Badges with Stereoscopic Parallax -->
+    <div class="hero-floating-badge hero-badge-left">
+      <div class="badge-radar">
+        <span class="radar-ripple"></span>
+        <span class="radar-core"></span>
+      </div>
+      <div class="badge-content">
+        <span class="badge-eyebrow">Sri Lanka Collection</span>
+        <span class="badge-heading">3 Luxury Sanctuaries</span>
+      </div>
+    </div>
+
+    <div class="hero-floating-badge hero-badge-right">
+      <div class="badge-trophy-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H7v2h10v-2h-2c-.55 0-1-.45-1-1v-2.34"></path><path d="M6 4h12v7a6 6 0 0 1-12 0V4z"></path></svg>
+      </div>
+      <div class="badge-content">
+        <span class="badge-eyebrow">5-Star Hospitality</span>
+        <span class="badge-heading">Guest Rating 4.9 ★★★★★</span>
+      </div>
+    </div>
+
     <!-- The Architectural Capsule Portal (Crystal Clear / Sharp Focus Window) -->
-    <div class="almaris-arch-stage">
+    <div class="almaris-arch-stage" id="archStage">
+      <!-- Arrow Controls -->
+      <button class="hero-arrow hero-arrow-prev" id="heroPrevBtn" aria-label="Previous Slide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="hero-arrow hero-arrow-next" id="heroNextBtn" aria-label="Next Slide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
       <!-- Crystal Clear / Sharp Inner Slide Mirror (0% Blur) -->
       <div class="arch-capsule-media">
         <div class="hero-slide-item active" data-slide="all" style="background-image: url('assets/images/waskaduwa/MG_2499_1920x1080.jpg');"></div>
@@ -228,7 +261,27 @@
       <!-- Foreground Content inside the Portal -->
       <div class="arch-capsule-content">
         <div class="arch-stars-row">
-          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          <span class="star-sparkle">★</span><span class="star-sparkle">★</span><span class="star-sparkle">★</span><span class="star-sparkle">★</span><span class="star-sparkle">★</span>
+        </div>
+
+        <!-- Interactive Property Selector Pills inside the Arch -->
+        <div class="hero-prop-selector" id="heroPropSelector">
+          <button class="hero-prop-pill active" data-slide="all" onclick="switchHeroSlide('all')">
+            <span class="prop-dot"></span>
+            <span class="prop-label">All Sanctuaries</span>
+          </button>
+          <button class="hero-prop-pill" data-slide="waskaduwa" onclick="switchHeroSlide('waskaduwa')">
+            <span class="prop-dot"></span>
+            <span class="prop-label">Waskaduwa</span>
+          </button>
+          <button class="hero-prop-pill" data-slide="hikkaduwa" onclick="switchHeroSlide('hikkaduwa')">
+            <span class="prop-dot"></span>
+            <span class="prop-label">Hikkaduwa</span>
+          </button>
+          <button class="hero-prop-pill" data-slide="steuart" onclick="switchHeroSlide('steuart')">
+            <span class="prop-dot"></span>
+            <span class="prop-label">The Steuart</span>
+          </button>
         </div>
 
         <h1 class="hero-arch-title" id="archTitle">
@@ -244,7 +297,20 @@
           <a href="#welcome" class="btn-almaris btn-almaris-outline">Our Sanctuaries</a>
         </div>
       </div>
+
+      <!-- Auto-Cycle Timeline Progress Bar -->
+      <div class="hero-timeline-track">
+        <div class="hero-timeline-progress" id="heroTimelineProgress"></div>
+      </div>
     </div>
+
+    <!-- Scroll Down Explore Prompt -->
+    <a href="#bookingBar" class="hero-scroll-invite" aria-label="Scroll to booking bar">
+      <div class="scroll-mouse-capsule">
+        <div class="scroll-mouse-wheel"></div>
+      </div>
+      <span class="scroll-invite-text">Scroll to Explore</span>
+    </a>
   </section>
 
   <!-- ==========================================================================

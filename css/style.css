@@ -825,28 +825,200 @@ ul, ol {
 /* Center Architectural Capsule Focus Portal (Clear Sharp Window) */
 .almaris-arch-stage {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   text-align: center;
-  width: 860px;
+  width: 880px;
   max-width: 90vw;
-  margin: 0 auto;
+  margin: 30px auto 45px;
   border-radius: 280px 280px 24px 24px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.35),
-    0 0 25px rgba(212, 175, 55, 0.18),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+    0 25px 60px rgba(0, 0, 0, 0.4),
+    0 0 35px rgba(212, 175, 55, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18);
   transition: transform 0.25s ease-out, box-shadow 0.35s ease, border-color 0.35s ease;
   will-change: transform;
 }
 
 .almaris-arch-stage:hover {
-  border-color: rgba(212, 175, 55, 0.8);
+  border-color: rgba(212, 175, 55, 0.9);
   box-shadow: 
-    0 28px 70px rgba(0, 0, 0, 0.45),
-    0 0 40px rgba(212, 175, 55, 0.28),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+    0 30px 75px rgba(0, 0, 0, 0.5),
+    0 0 45px rgba(212, 175, 55, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Ambient Golden Dust Luminous Particle Canvas */
+.hero-dust-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Floating 3D Micro-Badges with Stereoscopic Parallax */
+.hero-floating-badge {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(14, 18, 24, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  padding: 12px 18px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.18);
+  pointer-events: auto;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-floating-badge:hover {
+  transform: translateY(-4px) scale(1.03) !important;
+  border-color: var(--almaris-gold);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.35);
+}
+
+.hero-badge-left {
+  left: clamp(20px, 4.5vw, 70px);
+  top: 48%;
+  animation: floatSlowA 6.5s ease-in-out infinite;
+}
+
+.hero-badge-right {
+  right: clamp(20px, 4.5vw, 70px);
+  top: 52%;
+  animation: floatSlowB 7.5s ease-in-out infinite;
+}
+
+@keyframes floatSlowA {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-1deg);
+  }
+}
+
+@keyframes floatSlowB {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(1deg);
+  }
+}
+
+.badge-radar {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.radar-core {
+  width: 8px;
+  height: 8px;
+  background: var(--almaris-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--almaris-gold);
+}
+
+.radar-ripple {
+  position: absolute;
+  inset: -3px;
+  border: 1.5px solid var(--almaris-gold);
+  border-radius: 50%;
+  animation: radarPulse 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+@keyframes radarPulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.badge-trophy-icon {
+  color: var(--almaris-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.badge-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.badge-eyebrow {
+  font-size: 0.62rem;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--almaris-gold);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.badge-heading {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Slide Nav Arrows on Arch */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(14, 18, 24, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  opacity: 0.85;
+}
+
+.hero-arrow:hover {
+  background: rgba(212, 175, 55, 0.3);
+  border-color: var(--almaris-gold);
+  color: #FFFFFF;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  opacity: 1;
+}
+
+.hero-arrow-prev {
+  left: 18px;
+}
+
+.hero-arrow-next {
+  right: 18px;
 }
 
 /* Sharp Inner Image Stage (100% Crisp / Crystal Clear Focus) */
@@ -881,9 +1053,9 @@ ul, ol {
   height: 100%;
   background: linear-gradient(
     180deg,
-    rgba(12, 16, 22, 0.2) 0%,
-    rgba(12, 16, 22, 0.12) 35%,
-    rgba(12, 16, 22, 0.55) 100%
+    rgba(12, 16, 22, 0.25) 0%,
+    rgba(12, 16, 22, 0.14) 35%,
+    rgba(12, 16, 22, 0.6) 100%
   );
   z-index: 1;
   pointer-events: none;
@@ -893,7 +1065,7 @@ ul, ol {
 .arch-capsule-content {
   position: relative;
   z-index: 2;
-  padding: 72px 42px 90px;
+  padding: 65px 42px 75px;
 }
 
 .arch-stars-row {
@@ -901,31 +1073,135 @@ ul, ol {
   justify-content: center;
   gap: 8px;
   color: #D4AF37;
-  font-size: 1.1rem;
-  margin-bottom: 18px;
+  font-size: 1.15rem;
+  margin-bottom: 14px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
   letter-spacing: 4px;
 }
 
+.star-sparkle {
+  display: inline-block;
+  animation: starTwinkle 3s ease-in-out infinite;
+}
+
+.star-sparkle:nth-child(1) { animation-delay: 0s; }
+.star-sparkle:nth-child(2) { animation-delay: 0.2s; }
+.star-sparkle:nth-child(3) { animation-delay: 0.4s; }
+.star-sparkle:nth-child(4) { animation-delay: 0.6s; }
+.star-sparkle:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes starTwinkle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: drop-shadow(0 0 2px rgba(212, 175, 55, 0.4));
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.9));
+  }
+}
+
+/* Interactive Property Selector Pills inside the Arch */
+.hero-prop-selector {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(14, 18, 24, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-pill);
+  padding: 5px 8px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  flex-wrap: wrap;
+}
+
+.hero-prop-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.hero-prop-pill .prop-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: all 0.25s ease;
+}
+
+.hero-prop-pill:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-prop-pill.active {
+  background: rgba(212, 175, 55, 0.22);
+  border-color: rgba(212, 175, 55, 0.65);
+  color: #FFFFFF;
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+}
+
+.hero-prop-pill.active .prop-dot {
+  background: #D4AF37;
+  box-shadow: 0 0 8px #D4AF37;
+  transform: scale(1.2);
+}
+
+/* Cinematic Heading with Animated Golden Shimmer */
 .hero-arch-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+  font-size: clamp(2.3rem, 5vw, 4rem);
   font-weight: 400;
-  color: #ffffff;
   line-height: 1.15;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  text-shadow: 
-    0 2px 8px rgba(0, 0, 0, 0.85),
-    0 6px 26px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(
+    110deg,
+    #FFFFFF 0%,
+    #FFFFFF 35%,
+    #F7E9C8 46%,
+    #D4AF37 50%,
+    #F7E9C8 54%,
+    #FFFFFF 65%,
+    #FFFFFF 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: heroTitleShimmer 8s ease-in-out infinite;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes heroTitleShimmer {
+  0% {
+    background-position: 120% center;
+  }
+  35%, 100% {
+    background-position: -120% center;
+  }
 }
 
 .hero-arch-desc {
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   color: rgba(255, 255, 255, 0.95);
   max-width: 660px;
-  margin: 0 auto 34px;
+  margin: 0 auto 30px;
   line-height: 1.75;
   font-weight: 400;
   text-shadow: 
@@ -933,9 +1209,43 @@ ul, ol {
     0 4px 16px rgba(0, 0, 0, 0.65);
 }
 
-/* Refined Hero Action Buttons */
+/* Liquid Shimmer Gold Button */
 .almaris-arch-stage .btn-almaris-gold {
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 25px rgba(179, 134, 76, 0.35);
+  transition: all 0.35s ease;
+}
+
+.almaris-arch-stage .btn-almaris-gold::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -70%;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  animation: btnSweepGleam 4.5s ease-in-out infinite;
+}
+
+@keyframes btnSweepGleam {
+  0%, 70% {
+    left: -70%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.almaris-arch-stage .btn-almaris-gold:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 32px rgba(212, 175, 55, 0.5);
 }
 
 .almaris-arch-stage .btn-almaris-outline {
@@ -947,6 +1257,7 @@ ul, ol {
   font-weight: 600;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   box-shadow: 0 6px 22px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
 }
 
 .almaris-arch-stage .btn-almaris-outline:hover {
@@ -954,8 +1265,88 @@ ul, ol {
   border-color: #FFFFFF;
   color: var(--almaris-text-dark);
   text-shadow: none;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Timeline Progress Bar on Arch Base */
+.hero-timeline-track {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 10;
+}
+
+.hero-timeline-progress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--almaris-gold), #FFF);
+  box-shadow: 0 0 10px var(--almaris-gold);
+  transition: width 0.1s linear;
+}
+
+/* Scroll Down Prompt Below Hero Arch */
+.hero-scroll-invite {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  z-index: 4;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.hero-scroll-invite:hover {
+  color: var(--almaris-gold);
+  transform: translateY(3px);
+}
+
+.scroll-mouse-capsule {
+  width: 22px;
+  height: 34px;
+  border: 1.5px solid rgba(212, 175, 55, 0.65);
+  border-radius: 14px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-mouse-wheel {
+  width: 3.5px;
+  height: 8px;
+  background: var(--almaris-gold);
+  border-radius: 3px;
+  position: absolute;
+  top: 5px;
+  animation: mouseWheelSlide 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@keyframes mouseWheelSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+.scroll-invite-text {
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
 }
 
 /* ==========================================================================
@@ -2138,6 +2529,24 @@ textarea.almaris-text-input {
 }
 
 @media (max-width: 992px) {
+  .hero-floating-badge {
+    display: none !important;
+  }
+  .hero-arrow {
+    width: 36px !important;
+    height: 36px !important;
+    opacity: 0.75;
+  }
+  .hero-arrow-prev {
+    left: 8px !important;
+  }
+  .hero-arrow-next {
+    right: 8px !important;
+  }
+  .hero-prop-pill {
+    padding: 5px 11px;
+    font-size: 0.68rem;
+  }
   .almaris-topbar {
     display: none !important;
   }

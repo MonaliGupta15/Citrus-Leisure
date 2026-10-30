@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSidebarDrawer();
   initBookingBar();
   initCurrencyEngine();
+  initHeroParticles();
   initHeroSlider();
   initHeroParallax();
   initRoomFilterTabs();
@@ -127,7 +128,70 @@ function initSidebarDrawer() {
 }
 
 /* ==========================================================================
-   3. HERO SLIDER TRANSITIONS
+   3. HERO AMBIENT GOLDEN DUST PARTICLE SYSTEM (CINEMATIC LUXURY)
+   ========================================================================== */
+function initHeroParticles() {
+  const canvas = document.getElementById('heroDustCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  const PARTICLE_COUNT = 36;
+
+  function resize() {
+    if (!canvas.parentElement) return;
+    width = canvas.width = canvas.parentElement.offsetWidth;
+    height = canvas.height = canvas.parentElement.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  class DustParticle {
+    constructor() {
+      this.reset(true);
+    }
+    reset(initial = false) {
+      this.x = Math.random() * (width || window.innerWidth);
+      this.y = initial ? Math.random() * (height || window.innerHeight) : (height || window.innerHeight) + 10;
+      this.size = Math.random() * 2.2 + 0.8;
+      this.speedY = Math.random() * 0.4 + 0.15;
+      this.speedX = (Math.random() - 0.5) * 0.25;
+      this.opacity = Math.random() * 0.45 + 0.15;
+      this.sinSeed = Math.random() * 100;
+    }
+    update() {
+      this.y -= this.speedY;
+      this.sinSeed += 0.015;
+      this.x += Math.sin(this.sinSeed) * 0.3 + this.speedX;
+      if (this.y < -10) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+      ctx.shadowBlur = 6;
+      ctx.shadowColor = 'rgba(212, 175, 55, 0.5)';
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push(new DustParticle());
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, width, height);
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+    }
+    requestAnimationFrame(loop);
+  }
+  loop();
+}
+
+/* ==========================================================================
+   3B. HERO SLIDER TRANSITIONS & INTERACTIVE PROPERTY SELECTION
    ========================================================================== */
 const heroData = {
   all: {
@@ -148,7 +212,18 @@ const heroData = {
   }
 };
 
+const heroKeys = ['all', 'waskaduwa', 'hikkaduwa', 'steuart'];
+let heroCurrentIdx = 0;
+let heroProgressMs = 0;
+const HERO_CYCLE_DURATION = 8500; // 8.5 seconds
+let heroIsPaused = false;
+
 window.switchHeroSlide = (key) => {
+  const targetIdx = heroKeys.indexOf(key);
+  if (targetIdx !== -1) heroCurrentIdx = targetIdx;
+  heroProgressMs = 0; // reset timeline progress
+
+  // Update slide visuals in both blurred background and crisp center capsule
   const stages = document.querySelectorAll('.hero-slider-stage, .arch-capsule-media');
   stages.forEach(stage => {
     const currentActive = stage.querySelector('.hero-slide-item.active');
@@ -170,6 +245,17 @@ window.switchHeroSlide = (key) => {
     }
   });
 
+  // Update property selector active pill
+  const pills = document.querySelectorAll('.hero-prop-pill');
+  pills.forEach(pill => {
+    if (pill.getAttribute('data-slide') === key) {
+      pill.classList.add('active');
+    } else {
+      pill.classList.remove('active');
+    }
+  });
+
+  // Update text with silky micro-translate
   const titleEl = document.getElementById('archTitle');
   const descEl = document.getElementById('archDesc');
   const data = heroData[key] || heroData.all;
@@ -193,23 +279,53 @@ window.switchHeroSlide = (key) => {
   }
 };
 
+window.nextHeroSlide = () => {
+  heroCurrentIdx = (heroCurrentIdx + 1) % heroKeys.length;
+  switchHeroSlide(heroKeys[heroCurrentIdx]);
+};
+
+window.prevHeroSlide = () => {
+  heroCurrentIdx = (heroCurrentIdx - 1 + heroKeys.length) % heroKeys.length;
+  switchHeroSlide(heroKeys[heroCurrentIdx]);
+};
+
 function initHeroSlider() {
-  let idx = 0;
-  const keys = ['all', 'waskaduwa', 'hikkaduwa', 'steuart'];
-  // Auto subtle cycle every 9 seconds
+  const progressBar = document.getElementById('heroTimelineProgress');
+  const prevBtn = document.getElementById('heroPrevBtn');
+  const nextBtn = document.getElementById('heroNextBtn');
+  const archStage = document.getElementById('archStage');
+
+  if (prevBtn) prevBtn.addEventListener('click', window.prevHeroSlide);
+  if (nextBtn) nextBtn.addEventListener('click', window.nextHeroSlide);
+
+  if (archStage) {
+    archStage.addEventListener('mouseenter', () => { heroIsPaused = true; });
+    archStage.addEventListener('mouseleave', () => { heroIsPaused = false; });
+  }
+
+  // Smooth 80ms step progress bar animation
+  const stepMs = 80;
   setInterval(() => {
-    idx = (idx + 1) % keys.length;
-    switchHeroSlide(keys[idx]);
-  }, 9000);
+    if (!heroIsPaused) {
+      heroProgressMs += stepMs;
+      const pct = Math.min((heroProgressMs / HERO_CYCLE_DURATION) * 100, 100);
+      if (progressBar) progressBar.style.width = `${pct}%`;
+
+      if (heroProgressMs >= HERO_CYCLE_DURATION) {
+        window.nextHeroSlide();
+      }
+    }
+  }, stepMs);
 }
 
 /* ==========================================================================
-   3B. HERO INTERACTIVE 3D PARALLAX MOVEMENT
+   3C. HERO INTERACTIVE 3D PARALLAX MOVEMENT
    ========================================================================== */
 function initHeroParallax() {
   const heroSection = document.getElementById('hero');
   const sliderStage = document.querySelector('.hero-slider-stage');
   const archStage = document.querySelector('.almaris-arch-stage');
+  const floatingBadges = document.querySelectorAll('.hero-floating-badge');
   if (!heroSection || !sliderStage) return;
 
   heroSection.addEventListener('mousemove', (e) => {
@@ -218,10 +334,14 @@ function initHeroParallax() {
     const y = (e.clientY - rect.top) / rect.height - 0.5;
 
     // Smooth subtle luxury 3D depth movement
-    sliderStage.style.transform = `translate(${x * -22}px, ${y * -16}px)`;
+    sliderStage.style.transform = `translate(${x * -24}px, ${y * -16}px)`;
     if (archStage) {
       archStage.style.transform = `translate(${x * 14}px, ${y * 10}px)`;
     }
+    floatingBadges.forEach((badge, i) => {
+      const factor = i === 0 ? -28 : 28;
+      badge.style.transform = `translate(${x * factor}px, ${y * -14}px)`;
+    });
   }, { passive: true });
 
   heroSection.addEventListener('mouseleave', () => {
@@ -231,9 +351,14 @@ function initHeroParallax() {
       archStage.style.transition = 'transform 0.8s ease-out';
       archStage.style.transform = 'translate(0, 0)';
     }
+    floatingBadges.forEach(b => {
+      b.style.transition = 'transform 0.8s ease-out';
+      b.style.transform = 'translate(0, 0)';
+    });
     setTimeout(() => {
       sliderStage.style.transition = '';
       if (archStage) archStage.style.transition = '';
+      floatingBadges.forEach(b => { b.style.transition = ''; });
     }, 800);
   });
 }
