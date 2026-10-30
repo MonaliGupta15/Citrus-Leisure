@@ -71,6 +71,9 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -78,7 +81,9 @@ body {
   color: var(--almaris-text-body);
   background-color: var(--almaris-bg);
   line-height: 1.7;
-  overflow-x: clip;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 /* Custom Scrollbar */
@@ -2138,10 +2143,80 @@ textarea.almaris-text-input {
   }
   .almaris-header {
     position: fixed !important;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
     z-index: 1000;
+  }
+  .almaris-header .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+  .almaris-nav {
+    width: 100% !important;
+    height: 68px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+  }
+  .almaris-brand {
+    gap: 8px !important;
+    margin-right: 6px !important;
+    flex-shrink: 0 !important;
+  }
+  .brand-emblem-icon {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+  }
+  .brand-main-name {
+    font-size: 1.18rem !important;
+    letter-spacing: 2px !important;
+  }
+  .brand-star-row {
+    font-size: 0.52rem !important;
+    gap: 2px !important;
+  }
+  .brand-star-row span.sub {
+    font-size: 0.48rem !important;
+    letter-spacing: 0.8px !important;
+  }
+  .nav-right-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+  }
+  .nav-right-actions .btn-almaris {
+    padding: 6px 13px !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.8px !important;
+    white-space: nowrap !important;
+  }
+  .nav-right-actions .btn-almaris span {
+    display: none !important;
+  }
+  .nav-right-actions .btn-almaris::after {
+    content: "Book Now";
+    display: inline-block;
+  }
+  .sidebar-toggle-btn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    margin-right: 0 !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
   }
   .almaris-booking-form {
     grid-template-columns: 1fr 1fr;
@@ -2186,41 +2261,7 @@ textarea.almaris-text-input {
 
 @media (max-width: 768px) {
   :root {
-    --header-height: 70px;
-  }
-  .almaris-header .container {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-  .almaris-nav {
-    height: 70px;
-  }
-  .almaris-brand {
-    gap: 10px;
-    margin-right: 6px;
-  }
-  .brand-emblem-icon {
-    width: 38px;
-    height: 38px;
-  }
-  .brand-main-name {
-    font-size: 1.22rem;
-    letter-spacing: 2.5px;
-  }
-  .nav-right-actions {
-    gap: 10px;
-    margin-left: auto;
-  }
-  .nav-right-actions .btn-almaris {
-    padding: 8px 14px;
-    font-size: 0.68rem;
-    letter-spacing: 1px;
-  }
-  .sidebar-toggle-btn {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    min-height: 40px;
+    --header-height: 66px;
   }
   .almaris-arch-stage {
     border-radius: 140px 140px 18px 18px;
@@ -2263,48 +2304,48 @@ textarea.almaris-text-input {
 
 @media (max-width: 480px) {
   :root {
-    --header-height: 64px;
+    --header-height: 62px;
   }
   .almaris-header .container {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
   }
   .almaris-nav {
-    height: 64px;
+    height: 62px !important;
   }
   .almaris-brand {
-    gap: 8px;
-    margin-right: 4px;
+    gap: 7px !important;
+    margin-right: 4px !important;
   }
   .brand-emblem-icon {
-    width: 34px;
-    height: 34px;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
   }
   .brand-main-name {
-    font-size: 1.12rem;
-    letter-spacing: 1.8px;
+    font-size: 1.1rem !important;
+    letter-spacing: 1.8px !important;
   }
   .brand-star-row .star {
-    font-size: 0.52rem;
+    font-size: 0.5rem !important;
   }
   .brand-star-row span.sub {
-    font-size: 0.5rem;
-    letter-spacing: 0.8px;
+    font-size: 0.46rem !important;
+    letter-spacing: 0.6px !important;
   }
   .nav-right-actions {
-    gap: 8px;
-    margin-left: auto;
+    gap: 6px !important;
   }
   .nav-right-actions .btn-almaris {
-    padding: 7px 11px;
-    font-size: 0.64rem;
-    letter-spacing: 0.8px;
+    padding: 6px 11px !important;
+    font-size: 0.64rem !important;
+    letter-spacing: 0.6px !important;
   }
   .sidebar-toggle-btn {
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-    min-height: 38px;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
   }
   .almaris-sidebar-drawer {
     width: 88vw;
@@ -2340,17 +2381,29 @@ textarea.almaris-text-input {
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 380px) {
   .almaris-brand .brand-star-row span.sub {
-    display: none;
+    display: none !important;
   }
   .brand-main-name {
-    font-size: 1rem;
-    letter-spacing: 1.2px;
+    font-size: 1rem !important;
+    letter-spacing: 1.2px !important;
+  }
+  .nav-right-actions {
+    gap: 5px !important;
   }
   .nav-right-actions .btn-almaris {
-    padding: 6px 9px;
-    font-size: 0.6rem;
+    padding: 5px 9px !important;
+    font-size: 0.62rem !important;
+  }
+  .nav-right-actions .btn-almaris::after {
+    content: "Book" !important;
+  }
+  .sidebar-toggle-btn {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
   }
 }
 
