@@ -1291,8 +1291,8 @@ ul, ol {
 /* Scroll Down Prompt In Bottom Right Corner */
 .hero-scroll-invite {
   position: absolute;
-  bottom: 35px;
-  right: clamp(20px, 4vw, 55px);
+  bottom: clamp(95px, 11vh, 125px);
+  right: clamp(25px, 4.5vw, 65px);
   z-index: 10;
   display: flex;
   align-items: center;
